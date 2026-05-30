@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saveur Gourmande – Restaurant Africain</title>
+
+  <style>
+    :root{
+      --brown-dark:#2b1a0f;
+      --brown-medium:#3b2410;
+      --accent:#c47a2c;
+      --gold:#ffb347;
+      --whatsapp:#25D366;
+      --bg:#f7f7f7;
+      --text:#333;
+    }
+
+    *{box-sizing:border-box}
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    header {
+      background: linear-gradient(180deg, var(--brown-dark), #3a2313 70%);
+      padding: 48px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    /* LOGO */
+    header .logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto 18px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    header p {
+      font-size: 16px;
+      margin-top: 8px;
+      color: #f3e6d8;
+    }
+
+    section {
+      padding: 36px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: var(--accent);
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
+      margin-top: 0;
+    }
+
+    .menu-item {
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    /* --- STYLE DU MENU VISUEL --- */
+    .menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      background-color: #2e1a09;
+      color: #fff;
+      padding: 32px;
+      font-family: 'Poppins', sans-serif;
+      border-radius: 10px;
+      margin-top: 28px;
+    }
+
+    .menu-container h1 {
+      width: 100%;
+      text-align: center;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-size: 28px;
+    }
+
+    .menu-card {
+      width: 300px;
+      background-color: var(--brown-medium);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display:block;
+    }
+
+    .menu-card h3 {
+      color: var(--gold);
+      margin: 8px 0;
+      font-size: 18px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: var(--whatsapp);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    footer {
+      background-color: var(--brown-dark);
+      color: white;
+      text-align: center;
+      padding: 18px 12px;
+      margin-top: 36px;
+      font-size: 14px;
+    }
+
+    /* --- BOUTON WHATSAPP FLOTTANT --- */
+    .whatsapp-float {
+      position: fixed;
+      width: 56px;
+      height: 56px;
+      bottom: 18px;
+      right: 18px;
+      background-color: var(--whatsapp);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 26px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 768px) {
+      header { padding: 28px 14px; }
+      header h1 { font-size: 26px; }
+      header p { font-size: 14px; }
+      section { padding: 20px 14px; }
+      .menu-card { width: 100%; max-width: 420px; }
+      .menu-card img { height: 160px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="logo-saveur-gourmande.jpg.png" alt="Logo Saveur Gourmande" class="logo">
+    <h1>Saveur Gourmande</h1>
+    <p>Spécialités africaines – 100% authentique</p>
+  </header>
+
+  <section>
+    <h2>À propos</h2>
+    <p>
+      Saveur Gourmande vous propose une cuisine africaine authentique, préparée avec des produits frais
+      et des recettes traditionnelles. Un cadre chaleureux, une ambiance conviviale, et des saveurs uniques.
+    </p>
+  </section>
+
+  <section>
+    <h2>Menu</h2>
+
+    <div class="menu-item"><strong>Soupe de cabris</strong> — 2000 FR</div>
+    <div class="menu-item"><strong>Cabris sauté / braisé</strong> — 6000 FR</div>
+    <div class="menu-item"><strong>Sauté de gésiers</strong> — 6000 FR</div>
+    <div class="menu-item"><strong>Poisson carpe soupe / braisé</strong> — 3000 / 5000 / 8000 FR</div>
+    <div class="menu-item"><strong>Poisson fumé</strong> — 3000 / 5000 FR</div>
+    <div class="menu-item"><strong>Lapin soupe / braisé</strong> — 6000 / 12000 / 18000 FR</div>
+    <div class="menu-item"><strong>Canard soupe / braisé</strong> — 10000 / 20000 FR</div>
+    <div class="menu-item"><strong>Escargot</strong> — 5000 / 10000 FR</div>
+    <div class="menu-item"><strong>Écureuil / Perdrix</strong> — 5000 FR</div>
+    <div class="menu-item"><strong>Mangouste / Rat / Palmiste</strong> — 8000 FR</div>
+    <div class="menu-item"><strong>Agouti kedjenou / braisé</strong> — 15000 / 30000 / 20000 / 40000 FR</div>
+    <div class="menu-item"><strong>Hérisson kedjenou / braisé</strong> — 15000 / 30000 / 20000 / 40000 FR</div>
+    <div class="menu-item"><strong>Porc africain</strong> — 4000 / 5000 FR</div>
+    <div class="menu-item"><strong>Pondeuse soupe / braisé</strong> — 3500 / 7000 FR</div>
+    <div class="menu-item"><strong>Pintade de brousse soupe / braisé</strong> — 5000 / 10000 FR</div>
+    <div class="menu-item"><strong>Poulet africain</strong> — 4000 / 8000 FR</div>
+
+    <h3>Garnitures</h3>
+    <div class="menu-item"><strong>Igname / Alloco / Pomme de terre</strong> — 1000 FR</div>
+    <div class="menu-item"><strong>Riz</strong> — 500 FR</div>
+    <div class="menu-item"><strong>Attiéké</strong> — 100 FR</div>
+
+    <p><em>Bon Bandji pur — 500F le litre</em></p>
+  </section>
+
+  <!-- MENU VISUEL AVEC IMAGES -->
+  <section id="menu-saveur-gourmande" class="menu-container" aria-label="Menu visuel">
+    <h1>Menu Saveur Gourmande</h1>
+
+    <article class="menu-card" aria-labelledby="carpe-title">
+      <img src="carpe-braisee.jpg.png" alt="Carpe braisée ivoirienne">
+      <h3 id="carpe-title">Carpe braisée entière</h3>
+      <p>Carpe entière grillée à la braise, garnie d’oignons, tomates et piments, servie avec attiéké.</p>
+    </article>
+
+    <article class="menu-card" aria-labelledby="poulet-title">
+      <img src="poulet-braise.jpg.png" alt="Poulet africain braisé">
+      <h3 id="poulet-title">Poulet africain braisé</h3>
+      <p>Poulet entier doré et croustillant, accompagné d’attiéké, tomates, oignons et piments frais.</p>
+    </article>
+
+    <article class="menu-card" aria-labelledby="escargots-title">
+      <img src="escargots-sautes.jpg.png" alt="Escargots sautés ivoiriens">
+      <h3 id="escargots-title">Escargots sautés</h3>
+      <p>Escargots sautés à la sauce rouge brillante, garnis d’oignons, tomates et piments.</p>
+    </article>
+
+    <article class="menu-card" aria-labelledby="soupe-title">
+      <img src="soupe-de-cabri.jpg.png" alt="Soupe de cabri ivoirienne">
+      <h3 id="soupe-title">Soupe de cabri</h3>
+      <p>Morceaux de cabri tendres dans une sauce rouge épicée, servis avec du riz blanc.</p>
+    </article>
+
+    <article class="menu-card" aria-labelledby="garnitures-title">
+      <img src="garnitures-ivoiriennes.jpg.png" alt="Attiéké, alloco et igname grillée">
+      <h3 id="garnitures-title">Garnitures ivoiriennes</h3>
+      <p>Attiéké doré, alloco frit et igname grillée, présentés dans trois petits taliers.</p>
+    </article>
+  </section>
+
+  <section>
+    <h2>Réservations</h2>
+    <p>Contactez-nous directement :</p>
+
+    <a class="btn-whatsapp" href="https://wa.me/2250757766271" target="_blank" rel="noopener noreferrer">
+      Réserver via WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    © 2026 Saveur Gourmande – Tous droits réservés
+  </footer>
+
+  <!-- BOUTON WHATSAPP FLOTTANT -->
+  <a href="https://wa.me/2250757766271" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    🟢
+  </a>
+
+</body>
+</html>
