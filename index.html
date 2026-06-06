@@ -4,33 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>La Paillote du Chasseur – Restaurant Africain</title>
-  <meta name="facebook-domain-verification" content="b21s25fr3osnwrn4hp3wqtpu5hs2y3" />
 
   <style>
     :root{
-      --brown-dark:#2b1a0f;
-      --brown-medium:#3b2410;
+      --bg:#111;
+      --card:#1b1b1b;
       --accent:#c47a2c;
-      --gold:#ffb347;
+      --accent-soft:#e0a96b;
+      --text:#f5f5f5;
+      --muted:#bbbbbb;
+      --gold:#ffcc66;
+      --danger:#c0392b;
       --whatsapp:#25D366;
-      --bg:#f7f7f7;
-      --text:#333;
     }
 
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
 
     body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       background-color: var(--bg);
       color: var(--text);
     }
 
     header {
-      background: linear-gradient(180deg, var(--brown-dark), #3a2313 70%);
-      padding: 48px 20px;
+      background: radial-gradient(circle at top, #3b2410 0%, #0b0502 55%);
+      padding: 52px 20px 40px;
       text-align: center;
-      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 10% 0%, rgba(255,204,102,0.18), transparent 55%);
+      pointer-events:none;
     }
 
     header .Logo {
@@ -38,107 +47,346 @@
       height: auto;
       display: block;
       margin: 0 auto 18px;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(0,0,0,0.7);
     }
 
     header h1 {
-      font-size: 36px;
-      margin: 0;
-      font-weight: 700;
+      font-size: 38px;
       letter-spacing: 1px;
       color: var(--gold);
+      text-transform: uppercase;
     }
 
     header p {
+      margin-top: 10px;
       font-size: 16px;
-      margin-top: 8px;
-      color: #f3e6d8;
+      color: var(--muted);
+    }
+
+    .header-strip {
+      margin-top: 22px;
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .pill {
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      padding:8px 16px;
+      font-size:13px;
+      color:var(--muted);
+      background:rgba(0,0,0,0.35);
+    }
+
+    main {
+      max-width:1100px;
+      margin:0 auto;
+      padding:32px 18px 40px;
     }
 
     section {
-      padding: 36px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+      margin-bottom:40px;
     }
 
     h2 {
-      color: var(--accent);
-      border-left: 5px solid var(--accent);
-      padding-left: 10px;
-      margin-top: 0;
+      font-size:22px;
+      margin-bottom:14px;
+      color:var(--accent-soft);
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
 
-    .menu-item {
-      margin-bottom: 12px;
-      font-size: 17px;
+    h2::before {
+      content:"";
+      width:32px;
+      height:2px;
+      background:linear-gradient(90deg,var(--accent-soft),transparent);
     }
 
-    .menu-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 24px;
-      background-color: #2e1a09;
-      color: #fff;
-      padding: 32px;
-      border-radius: 10px;
-      margin-top: 28px;
+    p {
+      line-height:1.6;
+      color:var(--muted);
+      font-size:15px;
     }
 
-    .menu-container h1 {
-      width: 100%;
-      text-align: center;
-      color: var(--gold);
-      margin-bottom: 12px;
-      font-size: 28px;
+    /* MENU PREMIUM */
+    .menu-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
+      margin-top:18px;
     }
 
     .menu-card {
-      width: 300px;
-      background-color: var(--brown-medium);
-      border-radius: 10px;
-      padding: 14px;
-      text-align: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      background:linear-gradient(145deg,#181818,#101010);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 18px 40px rgba(0,0,0,0.7);
+      border:1px solid rgba(255,255,255,0.06);
+      display:flex;
+      flex-direction:column;
     }
 
     .menu-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      display:block;
+      filter:saturate(1.1);
     }
 
-    .menu-card h3 {
-      color: var(--gold);
-      margin: 8px 0;
-      font-size: 18px;
+    .menu-card-body {
+      padding:14px 16px 16px;
+    }
+
+    .menu-card-title {
+      font-size:17px;
+      color:var(--accent-soft);
+      margin-bottom:4px;
+    }
+
+    .menu-card-desc {
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .menu-card-price {
+      font-size:14px;
+      color:var(--gold);
+      font-weight:600;
+    }
+
+    .menu-list {
+      margin-top:16px;
+    }
+
+    .menu-item {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:6px 0;
+      border-bottom:1px dashed rgba(255,255,255,0.06);
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .menu-item span:first-child {
+      color:var(--text);
+    }
+
+    /* CONTACT */
+    .contact-buttons {
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:14px;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      transition:transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    .btn-phone {
+      background:#1e1e1e;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-phone:hover {
+      transform:translateY(-1px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .btn-email {
+      background:var(--accent);
+      color:#fff;
+    }
+
+    .btn-email:hover {
+      transform:translateY(-1px);
+      box-shadow:0 8px 20px rgba(196,122,44,0.6);
     }
 
     .btn-whatsapp {
-      display: inline-block;
-      background-color: var(--whatsapp);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 700;
+      background:var(--whatsapp);
+      color:#fff;
+    }
+
+    .btn-whatsapp:hover {
+      transform:translateY(-1px);
+      box-shadow:0 8px 20px rgba(37,211,102,0.6);
+    }
+
+    /* LOCALISATION / HORAIRES */
+    .card-soft {
+      background:#151515;
+      border-radius:14px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.06);
+      margin-top:14px;
+    }
+
+    .hours p {
+      display:flex;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--muted);
+      padding:4px 0;
+      border-bottom:1px dashed rgba(255,255,255,0.04);
+    }
+
+    /* AVIS FORM */
+    .avis-form {
+      background:#151515;
+      border-radius:16px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      max-width:520px;
+      margin-top:16px;
+    }
+
+    .avis-form label {
+      font-size:14px;
+      color:var(--accent-soft);
+      margin-bottom:4px;
+      display:block;
+    }
+
+    .avis-form input[type="text"],
+    .avis-form textarea,
+    .avis-form input[type="file"] {
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:#101010;
+      color:var(--text);
+      font-size:14px;
+      margin-bottom:10px;
+    }
+
+    .avis-form textarea {
+      resize:vertical;
+      min-height:90px;
+    }
+
+    .stars {
+      display:flex;
+      gap:6px;
+      font-size:24px;
+      cursor:pointer;
+      margin-bottom:10px;
+    }
+
+    .star {
+      color:#555;
+      transition:color 0.15s, transform 0.15s;
+    }
+
+    .star.active {
+      color:#ffc107;
+      transform:translateY(-1px);
+    }
+
+    .avis-form button {
+      width:100%;
+      padding:10px;
+      border-radius:999px;
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      font-size:15px;
+      cursor:pointer;
+      margin-top:4px;
+      transition:transform 0.15s, box-shadow 0.15s;
+    }
+
+    .avis-form button:hover {
+      transform:translateY(-1px);
+      box-shadow:0 8px 20px rgba(196,122,44,0.6);
+    }
+
+    /* AVIS LISTE */
+    .avis-list {
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+    }
+
+    .avis-card {
+      background:#151515;
+      border-radius:14px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .avis-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:6px;
+    }
+
+    .avis-name {
+      font-size:14px;
+      font-weight:600;
+      color:var(--accent-soft);
+    }
+
+    .avis-stars {
+      font-size:14px;
+      color:#ffc107;
+    }
+
+    .avis-text {
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+
+    .avis-photo {
+      width:100%;
+      max-height:180px;
+      object-fit:cover;
+      border-radius:10px;
+      margin-top:4px;
+    }
+
+    .avis-date {
+      font-size:11px;
+      color:#777;
+      margin-top:4px;
     }
 
     footer {
-      background-color: var(--brown-dark);
-      color: white;
-      text-align: center;
-      padding: 18px 12px;
-      margin-top: 36px;
-      font-size: 14px;
+      background:#050505;
+      color:#777;
+      text-align:center;
+      padding:16px 10px;
+      font-size:13px;
+      border-top:1px solid rgba(255,255,255,0.06);
     }
 
     .whatsapp-float {
       position: fixed;
-      width: 56px;
-      height: 56px;
+      width: 52px;
+      height: 52px;
       bottom: 18px;
       right: 18px;
       background-color: var(--whatsapp);
@@ -146,7 +394,7 @@
       border-radius: 50%;
       text-align: center;
       font-size: 26px;
-      box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.6);
       z-index: 999;
       display: flex;
       align-items: center;
@@ -154,62 +402,10 @@
       text-decoration: none;
     }
 
-    /* Avis – étoiles cliquables */
-    .stars {
-      display: flex;
-      gap: 6px;
-      font-size: 28px;
-      cursor: pointer;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-
-    .star {
-      color: #ccc;
-      transition: color 0.2s;
-    }
-
-    .star.active {
-      color: #ffc107;
-    }
-
-    .avis-form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .avis-form input[type="text"],
-    .avis-form textarea,
-    .avis-form input[type="file"] {
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-    }
-
-    .avis-form button {
-      background:#c47a2c;
-      color:white;
-      padding:12px;
-      border:none;
-      border-radius:6px;
-      font-size:18px;
-      cursor:pointer;
-    }
-
-    @media (max-width: 768px) {
-      header .Logo {
-        width: 160px;
-      }
-      header { padding: 28px 14px; }
-      header h1 { font-size: 26px; }
-      header p { font-size: 14px; }
-      section { padding: 20px 14px; }
-      .menu-card { width: 100%; max-width: 420px; }
-      .menu-card img { height: 160px; }
+    @media (max-width:768px){
+      header .Logo{width:160px}
+      header h1{font-size:26px}
+      main{padding:24px 14px 32px}
     }
   </style>
 </head>
@@ -219,199 +415,215 @@
   <header>
     <img src="Logo.jpg.png" alt="Logo La Paillote du Chasseur" class="Logo">
     <h1>La Paillote du Chasseur</h1>
-    <p>Spécialités africaines – 100% authentique</p>
+    <p>Restaurant africain – cuisine de chasse, braisés & spécialités authentiques.</p>
+
+    <div class="header-strip">
+      <div class="pill">Sapia, Daloa – Côte d’Ivoire</div>
+      <div class="pill">Ouvert 7j/7 – service continu</div>
+      <div class="pill">Réservation par téléphone & WhatsApp</div>
+    </div>
   </header>
 
-  <section>
-    <h2>À propos</h2>
-    <p>
-      La Paillote du Chasseur vous propose une cuisine africaine authentique, préparée avec des produits frais
-      et des recettes traditionnelles. Un cadre chaleureux, une ambiance conviviale, et des saveurs uniques.
-    </p>
-  </section>
+  <main>
 
-  <section>
-    <h2>Menu</h2>
+    <!-- À PROPOS -->
+    <section>
+      <h2>À propos</h2>
+      <p>
+        La Paillote du Chasseur vous accueille dans une ambiance chaleureuse, autour d’une cuisine africaine
+        authentique, inspirée des saveurs de la brousse et des recettes traditionnelles. Viandes de chasse,
+        braisés, soupes épicées, garnitures généreuses : chaque plat est préparé avec soin, pour une expérience
+        conviviale et mémorable.
+      </p>
+    </section>
 
-    <div class="menu-item"><strong>Soupe de cabris</strong> — 2000 Frcfa</div>
-    <div class="menu-item"><strong>Cabris sauté / braisé</strong> — 6000 Frcfa</div>
-    <div class="menu-item"><strong>Sauté de gésiers</strong> — 6000 Frcfa</div>
-    <div class="menu-item"><strong>Poisson carpe soupe / braisé</strong> — 3000 Frcfa / 5000 Frcfa / 8000 Frcfa</div>
-    <div class="menu-item"><strong>Poisson fumé</strong> — 3000 Frcfa / 5000 Frcfa</div>
-    <div class="menu-item"><strong>Lapin soupe / braisé</strong> — 6000 Frcfa / 12000 Frcfa/ 18000 Frcfa</div>
-    <div class="menu-item"><strong>Canard soupe / braisé</strong> — 10000 Frcfa / 20000 Frcfa</div>
-    <div class="menu-item"><strong>Escargot</strong> — 5000 Frcfa / 10000 Frcfa</div>
-    <div class="menu-item"><strong>Écureuil / Perdrix</strong> — 5000 Frcfa</div>
-    <div class="menu-item"><strong>Mangouste / Rat / Palmiste</strong> — 8000 Frcfa</div>
-    <div class="menu-item"><strong>Agouti kedjenou / braisé</strong> — 15000 Frcfa / 30000 Frcfa / 20000 Frcfa / 40000 Frcfa</div>
-    <div class="menu-item"><strong>Hérisson kedjenou / braisé</strong> — 15000 Frcfa / 30000 Frcfa / 20000 Frcfa / 40000 Frcfa</div>
-    <div class="menu-item"><strong>Porc africain</strong> — 4000 Frcfa / 5000 Frcfa</div>
-    <div class="menu-item"><strong>Pondeuse soupe / braisé</strong> — 3500 Frcfa / 7000 Frcfa</div>
-    <div class="menu-item"><strong>Pintade de brousse soupe / braisé</strong> — 5000 Frcfa / 10000 Frcfa</div>
-    <div class="menu-item"><strong>Poulet africain</strong> — 4000 / 8000 FR</div>
+    <!-- MENU PREMIUM VISUEL -->
+    <section>
+      <h2>Menu – Sélection du chef</h2>
 
-    <h3>Garnitures</h3>
-    <div class="menu-item"><strong>Igname / Alloco / Pomme de terre</strong> — 1000 Frcfa</div>
-    <div class="menu-item"><strong>Riz</strong> — 500 Frcfa</div>
-    <div class="menu-item"><strong>Attiéké</strong> — 100 Frcfa</div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <img src="carpe-braisee.jpg.png" alt="Carpe braisée">
+          <div class="menu-card-body">
+            <div class="menu-card-title">Carpe braisée entière</div>
+            <div class="menu-card-desc">
+              Carpe entière grillée à la braise, servie avec attiéké et sauce épicée.
+            </div>
+            <div class="menu-card-price">À partir de 5 000 Frcfa</div>
+          </div>
+        </article>
 
-    <h3>Nos Boissons</h3>
-    <p><em>Bon Bandji pur — 500 Frcfa le litre</em></p>
-    <p><em>Desperados — 500 Frcfa le litre</em></p>
-    <p><em>Bissap — 1000 Frcfa le litre</em></p>
-    <p><em>Gnanmankoudji — 1000 Frcfa le litre</em></p>
-    <p><em>L'Eau Minérale — 1000 Frcfa le litre</em></p>
-    <p><em>Vin — 6000 Frcfa</em></p>
-  </section>
+        <article class="menu-card">
+          <img src="poulet-braise.jpg.png" alt="Poulet braisé">
+          <div class="menu-card-body">
+            <div class="menu-card-title">Poulet africain braisé</div>
+            <div class="menu-card-desc">
+              Poulet entier doré et croustillant, accompagné d’attiéké ou d’igname grillée.
+            </div>
+            <div class="menu-card-price">4 000 – 8 000 Frcfa</div>
+          </div>
+        </article>
 
-  <!-- MENU VISUEL -->
-  <section id="menu-visuel" class="menu-container">
-    <h1>Menu La Paillote du Chasseur</h1>
+        <article class="menu-card">
+          <img src="escargots-sautes.jpg.png" alt="Escargots sautés">
+          <div class="menu-card-body">
+            <div class="menu-card-title">Escargots sautés</div>
+            <div class="menu-card-desc">
+              Escargots sautés à la sauce rouge brillante, servis bien relevés.
+            </div>
+            <div class="menu-card-price">5 000 – 10 000 Frcfa</div>
+          </div>
+        </article>
 
-    <article class="menu-card">
-      <img src="carpe-braisee.jpg.png" alt="Carpe braisée">
-      <h3>Carpe braisée entière</h3>
-      <p>Carpe entière grillée à la braise, servie avec attiéké.</p>
-    </article>
+        <article class="menu-card">
+          <img src="soupe-de-cabri.jpg.png" alt="Soupe de cabri">
+          <div class="menu-card-body">
+            <div class="menu-card-title">Soupe de cabri</div>
+            <div class="menu-card-desc">
+              Morceaux de cabri tendres dans une sauce rouge épicée, servis bien chauds.
+            </div>
+            <div class="menu-card-price">2 000 Frcfa</div>
+          </div>
+        </article>
 
-    <article class="menu-card">
-      <img src="poulet-braise.jpg.png" alt="Poulet braisé">
-      <h3>Poulet africain braisé</h3>
-      <p>Poulet entier doré et croustillant, accompagné d’attiéké.</p>
-    </article>
+        <article class="menu-card">
+          <img src="garnitures.jpg.png" alt="Garnitures">
+          <div class="menu-card-body">
+            <div class="menu-card-title">Garnitures</div>
+            <div class="menu-card-desc">
+              Attiéké, alloco, alloco huile rouge, riz, frites, igname grillée.
+            </div>
+            <div class="menu-card-price">À partir de 500 Frcfa</div>
+          </div>
+        </article>
 
-    <article class="menu-card">
-      <img src="escargots-sautes.jpg.png" alt="Escargots sautés ivoiriens">
-      <h3>Escargots sautés</h3>
-      <p>Escargots sautés à la sauce rouge brillante.</p>
-    </article>
-
-    <article class="menu-card">
-      <img src="soupe-de-cabri.jpg.png" alt="Soupe de cabri ivoirienne">
-      <h3>Soupe de cabri</h3>
-      <p>Morceaux de cabri tendres dans une sauce rouge épicée.</p>
-    </article>
-
-    <article class="menu-card">
-      <img src="garnitures.jpg.png" alt="Attiéké, Alloco, et Igname grillée">
-      <h3>Garnitures</h3>
-      <p>Attiéké, Alloco, Alloco huile rouge, Riz, Fritte et Igname grillée.</p>
-    </article>
-
-    <article class="menu-card">
-      <img src="Boissons.jpg.png" alt="Bière, Vins blanc, Vin rouge, Bissap">
-      <h3>Boissons</h3>
-      <p>Bière, Vins blanc, Vin rouge, Bissap, Gnanmankoudji, Koutoukou, Bandji...etc.</p>
-    </article>
-  </section>
-
-  <!-- LOCALISATION -->
-  <section id="localisation" style="padding:40px; background:#f7f7f7;">
-    <h2 style="text-align:center; color:#2b1a0f;">📍 Localisation</h2>
-    <p style="text-align:center; font-size:18px;">
-      La Paillote du Chasseur – Restaurant Africain<br>
-      Sapia, Daloa, Côte d’Ivoire
-    </p>
-
-    <div style="display:flex; justify-content:center; margin-top:20px;">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.123456789!2d-3.990000!3d5.360000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Paillote%20du%20Chasseur!5e0!3m2!1sfr!2sci!4v0000000000000"
-        width="90%" height="350" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy">
-      </iframe>
-    </div>
-
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://maps.app.goo.gl/KHdp5j7A3FnFXDXw7?g_st=iw" 
-        style="background:#25D366; padding:12px 20px; color:white; border-radius:8px; text-decoration:none; font-size:18px;">
-        📍 Ouvrir dans Google Maps
-      </a>
-    </div>
-  </section>
-
-  <!-- HORAIRES -->
-  <section id="horaires" style="padding:40px;">
-    <h2 style="text-align:center; color:#2b1a0f;">🕒 Horaires d’ouverture</h2>
-
-    <div style="max-width:400px; margin:auto; font-size:18px; line-height:1.8;">
-      <p><strong>Lundi :</strong> 11h00 – 23h00</p>
-      <p><strong>Mardi :</strong> 11h00 – 23h00</p>
-      <p><strong>Mercredi :</strong> 11h00 – 23h00</p>
-      <p><strong>Jeudi :</strong> 11h00 – 23h00</p>
-      <p><strong>Vendredi :</strong> 11h00 – 00h00</p>
-      <p><strong>Samedi :</strong> 11h00 – 00h00</p>
-      <p><strong>Dimanche :</strong> 12h00 – 22h00</p>
-    </div>
-  </section>
-
-  <!-- RÉSERVATIONS -->
-  <section>
-    <h2>Réservations</h2>
-    <p>Contactez-nous directement :</p>
-
-    <a class="btn-whatsapp" href="https://wa.me/2250757766271" target="_blank">
-      Réserver via WhatsApp
-    </a>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" style="padding:40px; background:#fff;">
-    <h2 style="text-align:center; color:#2b1a0f;">📞 Contact</h2>
-
-    <div style="text-align:center; margin-top:20px;">
-      <a href="tel:+2250757766271"
-         style="background:#2b1a0f; color:white; padding:12px 20px; border-radius:8px; 
-                text-decoration:none; font-size:18px; margin:6px; display:inline-block;">
-        📞 Appeler maintenant
-      </a>
-
-      <a href="mailto:contact@lapailloteduchasseur.ci"
-         style="background:#c47a2c; color:white; padding:12px 20px; border-radius:8px; 
-                text-decoration:none; font-size:18px; margin:6px; display:inline-block;">
-        ✉️ Envoyer un email
-      </a>
-
-      <a href="https://wa.me/2250757766271" target="_blank"
-         style="background:#25D366; color:white; padding:12px 20px; border-radius:8px; 
-                text-decoration:none; font-size:18px; margin:6px; display:inline-block;">
-        🟢 WhatsApp
-      </a>
-    </div>
-  </section>
-
-  <!-- AVIS CLIENTS AVANCÉS -->
-  <section id="avis" style="padding:40px; background:#f7f7f7;">
-    <h2 style="text-align:center; color:#2b1a0f;">⭐ Donnez votre avis</h2>
-
-    <form id="avisForm"
-          class="avis-form"
-          action="mailto:contact@lapailloteduchasseur.ci"
-          method="POST"
-          enctype="multipart/form-data">
-
-      <label style="font-weight:600;">Votre nom :</label>
-      <input type="text" name="Nom" required>
-
-      <label style="font-weight:600;">Votre note :</label>
-      <div class="stars" id="stars">
-        <span class="star" data-value="1">★</span>
-        <span class="star" data-value="2">★</span>
-        <span class="star" data-value="3">★</span>
-        <span class="star" data-value="4">★</span>
-        <span class="star" data-value="5">★</span>
+        <article class="menu-card">
+          <img src="Boissons.jpg.png" alt="Boissons">
+          <div class="menu-card-body">
+            <div class="menu-card-title">Boissons maison</div>
+            <div class="menu-card-desc">
+              Bissap, Gnanmankoudji, Bandji, bières, vins, eau minérale.
+            </div>
+            <div class="menu-card-price">À partir de 500 Frcfa</div>
+          </div>
+        </article>
       </div>
-      <input type="hidden" name="Note" id="noteValue" value="5">
 
-      <label style="font-weight:600;">Votre avis :</label>
-      <textarea name="Avis" rows="5" required></textarea>
+      <div class="menu-list">
+        <div class="menu-item"><span>Soupe de cabris</span><span>2 000 Frcfa</span></div>
+        <div class="menu-item"><span>Cabris sauté / braisé</span><span>6 000 Frcfa</span></div>
+        <div class="menu-item"><span>Sauté de gésiers</span><span>6 000 Frcfa</span></div>
+        <div class="menu-item"><span>Poisson carpe soupe / braisé</span><span>3 000 / 5 000 / 8 000 Frcfa</span></div>
+        <div class="menu-item"><span>Poisson fumé</span><span>3 000 / 5 000 Frcfa</span></div>
+        <div class="menu-item"><span>Lapin soupe / braisé</span><span>6 000 / 12 000 / 18 000 Frcfa</span></div>
+        <div class="menu-item"><span>Canard soupe / braisé</span><span>10 000 / 20 000 Frcfa</span></div>
+        <div class="menu-item"><span>Escargot</span><span>5 000 / 10 000 Frcfa</span></div>
+        <div class="menu-item"><span>Écureuil / Perdrix</span><span>5 000 Frcfa</span></div>
+        <div class="menu-item"><span>Mangouste / Rat / Palmiste</span><span>8 000 Frcfa</span></div>
+        <div class="menu-item"><span>Agouti kedjenou / braisé</span><span>15 000 / 20 000 / 30 000 / 40 000 Frcfa</span></div>
+        <div class="menu-item"><span>Hérisson kedjenou / braisé</span><span>15 000 / 20 000 / 30 000 / 40 000 Frcfa</span></div>
+        <div class="menu-item"><span>Porc africain</span><span>4 000 / 5 000 Frcfa</span></div>
+        <div class="menu-item"><span>Pondeuse soupe / braisé</span><span>3 500 / 7 000 Frcfa</span></div>
+        <div class="menu-item"><span>Pintade de brousse soupe / braisé</span><span>5 000 / 10 000 Frcfa</span></div>
+        <div class="menu-item"><span>Poulet africain</span><span>4 000 / 8 000 Frcfa</span></div>
+      </div>
+    </section>
 
-      <label style="font-weight:600;">Ajouter une photo (optionnel) :</label>
-      <input type="file" name="Photo" accept="image/*">
+    <!-- LOCALISATION -->
+    <section>
+      <h2>📍 Localisation</h2>
+      <p>La Paillote du Chasseur – Sapia, Daloa, Côte d’Ivoire.</p>
 
-      <button type="submit">
-        Envoyer mon avis
-      </button>
-    </form>
-  </section>
+      <div class="card-soft">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.123456789!2d-3.990000!3d5.360000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Paillote%20du%20Chasseur!5e0!3m2!1sfr!2sci!4v0000000000000"
+          width="100%" height="320" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy">
+        </iframe>
+
+        <div style="text-align:center;margin-top:14px;">
+          <a href="https://maps.app.goo.gl/KHdp5j7A3FnFXDXw7?g_st=iw"
+             style="display:inline-block;background:var(--accent);color:#fff;padding:10px 18px;border-radius:999px;text-decoration:none;font-size:14px;">
+            📍 Ouvrir dans Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORAIRES -->
+    <section>
+      <h2>🕒 Horaires d’ouverture</h2>
+      <div class="card-soft hours">
+        <p><span>Lundi</span><span>11h00 – 23h00</span></p>
+        <p><span>Mardi</span><span>11h00 – 23h00</span></p>
+        <p><span>Mercredi</span><span>11h00 – 23h00</span></p>
+        <p><span>Jeudi</span><span>11h00 – 23h00</span></p>
+        <p><span>Vendredi</span><span>11h00 – 00h00</span></p>
+        <p><span>Samedi</span><span>11h00 – 00h00</span></p>
+        <p><span>Dimanche</span><span>12h00 – 22h00</span></p>
+      </div>
+    </section>
+
+    <!-- RÉSERVATIONS & CONTACT -->
+    <section>
+      <h2>Réservations & contact</h2>
+      <p>Pour réserver une table, commander un plat ou organiser un événement :</p>
+
+      <div class="contact-buttons">
+        <a href="tel:+2250757766271" class="btn btn-phone">
+          📞 <span>Appeler maintenant</span>
+        </a>
+
+        <a href="mailto:contact@lapailloteduchasseur.ci" class="btn btn-email">
+          ✉️ <span>Envoyer un email</span>
+        </a>
+
+        <a href="https://wa.me/2250757766271" target="_blank" class="btn btn-whatsapp">
+          🟢 <span>WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- AVIS CLIENTS – FORMULAIRE -->
+    <section>
+      <h2>⭐ Donnez votre avis</h2>
+      <p>Partagez votre expérience à La Paillote du Chasseur. Votre avis nous aide à améliorer notre service.</p>
+
+      <form class="avis-form" id="avisForm">
+        <label>Votre nom</label>
+        <input type="text" id="avisNom" required>
+
+        <label>Votre note</label>
+        <div class="stars" id="stars">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+        <input type="hidden" id="avisNote" value="5">
+
+        <label>Votre avis</label>
+        <textarea id="avisTexte" required></textarea>
+
+        <label>Ajouter une photo (optionnel)</label>
+        <input type="file" id="avisPhoto" accept="image/*">
+
+        <button type="submit">Envoyer mon avis</button>
+        <p id="avisMessage" style="margin-top:8px;font-size:13px;color:var(--muted);"></p>
+      </form>
+    </section>
+
+    <!-- AVIS CLIENTS – LISTE PUBLIQUE -->
+    <section>
+      <h2>🗣 Avis de nos clients</h2>
+      <p>Voici les avis validés par La Paillote du Chasseur.</p>
+
+      <div class="avis-list" id="avisList">
+        <!-- Avis chargés automatiquement depuis Google Sheets -->
+      </div>
+    </section>
+
+  </main>
 
   <footer>
     © 2026 La Paillote du Chasseur – Tous droits réservés
@@ -422,34 +634,148 @@
   </a>
 
   <script>
-    // Gestion des étoiles cliquables
+    // Étoiles cliquables
     const stars = document.querySelectorAll('.star');
-    const noteInput = document.getElementById('noteValue');
+    const noteInput = document.getElementById('avisNote');
 
     stars.forEach(star => {
       star.addEventListener('click', () => {
         const value = parseInt(star.getAttribute('data-value'), 10);
         noteInput.value = value;
-
         stars.forEach(s => {
           const v = parseInt(s.getAttribute('data-value'), 10);
-          if (v <= value) {
-            s.classList.add('active');
-          } else {
-            s.classList.remove('active');
-          }
+          if (v <= value) s.classList.add('active');
+          else s.classList.remove('active');
         });
       });
     });
 
-    // Valeur par défaut : 5 étoiles actives
+    // Valeur par défaut : 5 étoiles
     window.addEventListener('DOMContentLoaded', () => {
       stars.forEach(s => {
-        if (parseInt(s.getAttribute('data-value'), 10) <= 5) {
-          s.classList.add('active');
-        }
+        if (parseInt(s.getAttribute('data-value'), 10) <= 5) s.classList.add('active');
       });
+      chargerAvis();
     });
+
+    // ENVOI AVIS VERS GOOGLE APPS SCRIPT
+    const avisForm = document.getElementById('avisForm');
+    const avisMessage = document.getElementById('avisMessage');
+
+    avisForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      avisMessage.textContent = "Envoi en cours...";
+
+      const nom = document.getElementById('avisNom').value.trim();
+      const note = document.getElementById('avisNote').value;
+      const texte = document.getElementById('avisTexte').value.trim();
+      const photoInput = document.getElementById('avisPhoto');
+
+      let photoBase64 = "";
+      if (photoInput.files && photoInput.files[0]) {
+        const file = photoInput.files[0];
+        photoBase64 = await toBase64(file);
+      }
+
+      try {
+        // ⚠️ Remplace l’URL ci-dessous par l’URL de ton Web App Google Apps Script
+        const url = "https://script.google.com/macros/s/AKfycbzq5pD2BPreHU1PW-MIy8I82kv9TqmG1t91uuUaOoDbotZTteI7TyOTXua97hlS808n/exec";
+
+        const payload = {
+          nom,
+          note,
+          texte,
+          photo: photoBase64
+        };
+
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          avisMessage.textContent = "Merci ! Votre avis a été envoyé et sera publié après validation.";
+          avisForm.reset();
+          document.getElementById('avisNote').value = 5;
+          stars.forEach(s => {
+            const v = parseInt(s.getAttribute('data-value'), 10);
+            if (v <= 5) s.classList.add('active');
+            else s.classList.remove('active');
+          });
+        } else {
+          avisMessage.textContent = "Une erreur est survenue. Merci de réessayer.";
+        }
+      } catch (err) {
+        avisMessage.textContent = "Impossible d’envoyer l’avis pour le moment.";
+      }
+    });
+
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // CHARGER LES AVIS VALIDÉS DEPUIS GOOGLE SHEETS
+    async function chargerAvis() {
+      try {
+        // ⚠️ Remplace l’URL ci-dessous par l’URL de ton Web App Google Apps Script (mode GET)
+        const url = "https://script.google.com/macros/s/AKfycbzq5pD2BPreHU1PW-MIy8I82kv9TqmG1t91uuUaOoDbotZTteI7TyOTXua97hlS808n/exec";
+
+        const res = await fetch(url);
+        if (!res.ok) return;
+
+        const data = await res.json(); // format: [{nom, note, texte, photoUrl, date}, ...]
+        const container = document.getElementById('avisList');
+        container.innerHTML = "";
+
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.className = "avis-card";
+
+          const header = document.createElement('div');
+          header.className = "avis-header";
+
+          const name = document.createElement('div');
+          name.className = "avis-name";
+          name.textContent = item.nom;
+
+          const starsDiv = document.createElement('div');
+          starsDiv.className = "avis-stars";
+          starsDiv.textContent = "★".repeat(parseInt(item.note,10));
+
+          header.appendChild(name);
+          header.appendChild(starsDiv);
+
+          const text = document.createElement('div');
+          text.className = "avis-text";
+          text.textContent = item.texte;
+
+          card.appendChild(header);
+          card.appendChild(text);
+
+          if (item.photoUrl) {
+            const img = document.createElement('img');
+            img.className = "avis-photo";
+            img.src = item.photoUrl;
+            card.appendChild(img);
+          }
+
+          const date = document.createElement('div');
+          date.className = "avis-date";
+          date.textContent = item.date || "";
+          card.appendChild(date);
+
+          container.appendChild(card);
+        });
+      } catch (err) {
+        // silencieux
+      }
+    }
   </script>
 
 </body>
