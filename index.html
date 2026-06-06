@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Saveur gourmande – Restaurant Africain</title>
+  <title>La Paillote du Chasseur – Restaurant Africain</title>
   <meta name="facebook-domain-verification" content="b21s25fr3osnwrn4hp3wqtpu5hs2y3" />
 
   <style>
@@ -33,13 +33,12 @@
       color: white;
     }
 
-   header .Logo {
-    width: 220px;     /* taille idéale pour un logo circulaire */
-    height: auto;
-    display: block;
-    margin: 0 auto 18px;
-   }
-
+    header .Logo {
+      width: 220px;
+      height: auto;
+      display: block;
+      margin: 0 auto 18px;
+    }
 
     header h1 {
       font-size: 36px;
@@ -155,9 +154,55 @@
       text-decoration: none;
     }
 
+    /* Avis – étoiles cliquables */
+    .stars {
+      display: flex;
+      gap: 6px;
+      font-size: 28px;
+      cursor: pointer;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .star {
+      color: #ccc;
+      transition: color 0.2s;
+    }
+
+    .star.active {
+      color: #ffc107;
+    }
+
+    .avis-form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .avis-form input[type="text"],
+    .avis-form textarea,
+    .avis-form input[type="file"] {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .avis-form button {
+      background:#c47a2c;
+      color:white;
+      padding:12px;
+      border:none;
+      border-radius:6px;
+      font-size:18px;
+      cursor:pointer;
+    }
+
     @media (max-width: 768px) {
       header .Logo {
-      width: 160px;
+        width: 160px;
       }
       header { padding: 28px 14px; }
       header h1 { font-size: 26px; }
@@ -172,15 +217,15 @@
 <body>
 
   <header>
-    <img src="Logo.jpg.png" alt="Logo La paillote du chasseur" class="Logo">
-    <h1>Saveur gourmande</h1>
+    <img src="Logo.jpg.png" alt="Logo La Paillote du Chasseur" class="Logo">
+    <h1>La Paillote du Chasseur</h1>
     <p>Spécialités africaines – 100% authentique</p>
   </header>
 
   <section>
     <h2>À propos</h2>
     <p>
-      Saveur gourmande vous propose une cuisine africaine authentique, préparée avec des produits frais
+      La Paillote du Chasseur vous propose une cuisine africaine authentique, préparée avec des produits frais
       et des recettes traditionnelles. Un cadre chaleureux, une ambiance conviviale, et des saveurs uniques.
     </p>
   </section>
@@ -210,18 +255,18 @@
     <div class="menu-item"><strong>Riz</strong> — 500 Frcfa</div>
     <div class="menu-item"><strong>Attiéké</strong> — 100 Frcfa</div>
 
-     <h3>Nos Boissons</h3>
+    <h3>Nos Boissons</h3>
     <p><em>Bon Bandji pur — 500 Frcfa le litre</em></p>
     <p><em>Desperados — 500 Frcfa le litre</em></p>
     <p><em>Bissap — 1000 Frcfa le litre</em></p>
     <p><em>Gnanmankoudji — 1000 Frcfa le litre</em></p>
     <p><em>L'Eau Minérale — 1000 Frcfa le litre</em></p>
-    <p><em>Vin — 6000Frcfa</em></p>
+    <p><em>Vin — 6000 Frcfa</em></p>
   </section>
 
   <!-- MENU VISUEL -->
-  <section id="Saveur gourmande" class="menu-container">
-    <h1>Menu La paillote du chasseur</h1>
+  <section id="menu-visuel" class="menu-container">
+    <h1>Menu La Paillote du Chasseur</h1>
 
     <article class="menu-card">
       <img src="carpe-braisee.jpg.png" alt="Carpe braisée">
@@ -254,9 +299,9 @@
     </article>
 
     <article class="menu-card">
-      <img src="Boissons.jpg.png" alt="Biere, Vins blanc, Vin rouge, Bissap">
+      <img src="Boissons.jpg.png" alt="Bière, Vins blanc, Vin rouge, Bissap">
       <h3>Boissons</h3>
-      <p>Biere, Vins blanc, Vin rouge, Bissap, Gnanmankoudji, Koutoukou, Bandji...etc.</p>
+      <p>Bière, Vins blanc, Vin rouge, Bissap, Gnanmankoudji, Koutoukou, Bandji...etc.</p>
     </article>
   </section>
 
@@ -264,13 +309,13 @@
   <section id="localisation" style="padding:40px; background:#f7f7f7;">
     <h2 style="text-align:center; color:#2b1a0f;">📍 Localisation</h2>
     <p style="text-align:center; font-size:18px;">
-      La paillote du chasseur – Restaurant Africain<br>
-     Sapia, Daloa, Côte d’Ivoire
+      La Paillote du Chasseur – Restaurant Africain<br>
+      Sapia, Daloa, Côte d’Ivoire
     </p>
 
     <div style="display:flex; justify-content:center; margin-top:20px;">
       <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.123456789!2d-3.990000!3d5.360000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSaveur%20Gourmande!5e0!3m2!1sfr!2sci!4v0000000000000"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.123456789!2d-3.990000!3d5.360000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Paillote%20du%20Chasseur!5e0!3m2!1sfr!2sci!4v0000000000000"
         width="90%" height="350" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy">
       </iframe>
     </div>
@@ -298,6 +343,7 @@
     </div>
   </section>
 
+  <!-- RÉSERVATIONS -->
   <section>
     <h2>Réservations</h2>
     <p>Contactez-nous directement :</p>
@@ -307,13 +353,104 @@
     </a>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" style="padding:40px; background:#fff;">
+    <h2 style="text-align:center; color:#2b1a0f;">📞 Contact</h2>
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="tel:+2250757766271"
+         style="background:#2b1a0f; color:white; padding:12px 20px; border-radius:8px; 
+                text-decoration:none; font-size:18px; margin:6px; display:inline-block;">
+        📞 Appeler maintenant
+      </a>
+
+      <a href="mailto:contact@lapailloteduchasseur.ci"
+         style="background:#c47a2c; color:white; padding:12px 20px; border-radius:8px; 
+                text-decoration:none; font-size:18px; margin:6px; display:inline-block;">
+        ✉️ Envoyer un email
+      </a>
+
+      <a href="https://wa.me/2250757766271" target="_blank"
+         style="background:#25D366; color:white; padding:12px 20px; border-radius:8px; 
+                text-decoration:none; font-size:18px; margin:6px; display:inline-block;">
+        🟢 WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- AVIS CLIENTS AVANCÉS -->
+  <section id="avis" style="padding:40px; background:#f7f7f7;">
+    <h2 style="text-align:center; color:#2b1a0f;">⭐ Donnez votre avis</h2>
+
+    <form id="avisForm"
+          class="avis-form"
+          action="mailto:contact@lapailloteduchasseur.ci"
+          method="POST"
+          enctype="multipart/form-data">
+
+      <label style="font-weight:600;">Votre nom :</label>
+      <input type="text" name="Nom" required>
+
+      <label style="font-weight:600;">Votre note :</label>
+      <div class="stars" id="stars">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+      <input type="hidden" name="Note" id="noteValue" value="5">
+
+      <label style="font-weight:600;">Votre avis :</label>
+      <textarea name="Avis" rows="5" required></textarea>
+
+      <label style="font-weight:600;">Ajouter une photo (optionnel) :</label>
+      <input type="file" name="Photo" accept="image/*">
+
+      <button type="submit">
+        Envoyer mon avis
+      </button>
+    </form>
+  </section>
+
   <footer>
-    © 2026 Saveur gourmande – Tous droits réservés
+    © 2026 La Paillote du Chasseur – Tous droits réservés
   </footer>
 
   <a href="https://wa.me/2250757766271" class="whatsapp-float" target="_blank">
     🟢
   </a>
+
+  <script>
+    // Gestion des étoiles cliquables
+    const stars = document.querySelectorAll('.star');
+    const noteInput = document.getElementById('noteValue');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const value = parseInt(star.getAttribute('data-value'), 10);
+        noteInput.value = value;
+
+        stars.forEach(s => {
+          const v = parseInt(s.getAttribute('data-value'), 10);
+          if (v <= value) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+
+    // Valeur par défaut : 5 étoiles actives
+    window.addEventListener('DOMContentLoaded', () => {
+      stars.forEach(s => {
+        if (parseInt(s.getAttribute('data-value'), 10) <= 5) {
+          s.classList.add('active');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
