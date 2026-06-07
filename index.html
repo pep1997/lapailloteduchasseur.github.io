@@ -321,6 +321,12 @@
       box-shadow:0 8px 20px rgba(196,122,44,0.6);
     }
 
+    .avis-form button:disabled {
+      opacity:0.6;
+      cursor:not-allowed;
+      transform:none;
+    }
+
     .avis-list {
       margin-top:20px;
       display:grid;
@@ -467,7 +473,7 @@
     }
   </style>
 </head>
-  <body>
+<body>
 
   <header>
     <img src="Logo.jpg.png" alt="Logo La Paillote du Chasseur" class="Logo">
@@ -475,7 +481,7 @@
     <p>Restaurant africain – cuisine de chasse, braisés & spécialités authentiques.</p>
 
     <div class="header-strip">
-      <div class="pill">Sapia, Daloa – Côte d’Ivoire</div>
+      <div class="pill">Sapia, Daloa – Côte d'Ivoire</div>
       <div class="pill">Ouvert 7j/7 – service continu</div>
       <div class="pill">Réservation par téléphone & WhatsApp</div>
     </div>
@@ -487,7 +493,7 @@
     <section>
       <h2>À propos</h2>
       <p>
-        La Paillote du Chasseur vous accueille dans une ambiance chaleureuse, autour d’une cuisine africaine
+        La Paillote du Chasseur vous accueille dans une ambiance chaleureuse, autour d'une cuisine africaine
         authentique, inspirée des saveurs de la brousse et des recettes traditionnelles. Viandes de chasse,
         braisés, soupes épicées, garnitures généreuses : chaque plat est préparé avec soin, pour une expérience
         conviviale et mémorable.
@@ -503,9 +509,7 @@
           <img src="carpe-braisee.jpg.png" alt="Carpe braisée">
           <div class="menu-card-body">
             <div class="menu-card-title">Carpe braisée entière</div>
-            <div class="menu-card-desc">
-              Carpe entière grillée à la braise, servie avec attiéké et sauce épicée.
-            </div>
+            <div class="menu-card-desc">Carpe entière grillée à la braise, servie avec attiéké et sauce épicée.</div>
             <div class="menu-card-price">À partir de 5 000 Frcfa</div>
           </div>
         </article>
@@ -514,9 +518,7 @@
           <img src="poulet-braise.jpg.png" alt="Poulet braisé">
           <div class="menu-card-body">
             <div class="menu-card-title">Poulet africain braisé</div>
-            <div class="menu-card-desc">
-              Poulet entier doré et croustillant, accompagné d’attiéké ou d’igname grillée.
-            </div>
+            <div class="menu-card-desc">Poulet entier doré et croustillant, accompagné d'attiéké ou d'igname grillée.</div>
             <div class="menu-card-price">4 000 – 8 000 Frcfa</div>
           </div>
         </article>
@@ -525,9 +527,7 @@
           <img src="escargots-sautes.jpg.png" alt="Escargots sautés">
           <div class="menu-card-body">
             <div class="menu-card-title">Escargots sautés</div>
-            <div class="menu-card-desc">
-              Escargots sautés à la sauce rouge brillante, servis bien relevés.
-            </div>
+            <div class="menu-card-desc">Escargots sautés à la sauce rouge brillante, servis bien relevés.</div>
             <div class="menu-card-price">5 000 – 10 000 Frcfa</div>
           </div>
         </article>
@@ -536,9 +536,7 @@
           <img src="soupe-de-cabri.jpg.png" alt="Soupe de cabri">
           <div class="menu-card-body">
             <div class="menu-card-title">Soupe de cabri</div>
-            <div class="menu-card-desc">
-              Morceaux de cabri tendres dans une sauce rouge épicée, servis bien chauds.
-            </div>
+            <div class="menu-card-desc">Morceaux de cabri tendres dans une sauce rouge épicée, servis bien chauds.</div>
             <div class="menu-card-price">2 000 Frcfa</div>
           </div>
         </article>
@@ -547,9 +545,7 @@
           <img src="garnitures.jpg.png" alt="Garnitures">
           <div class="menu-card-body">
             <div class="menu-card-title">Garnitures</div>
-            <div class="menu-card-desc">
-              Attiéké, alloco, alloco huile rouge, riz, frites, igname grillée.
-            </div>
+            <div class="menu-card-desc">Attiéké, alloco, alloco huile rouge, riz, frites, igname grillée.</div>
             <div class="menu-card-price">À partir de 500 Frcfa</div>
           </div>
         </article>
@@ -558,9 +554,7 @@
           <img src="Boissons.jpg.png" alt="Boissons">
           <div class="menu-card-body">
             <div class="menu-card-title">Boissons maison</div>
-            <div class="menu-card-desc">
-              Bissap, Gnanmankoudji, Bandji, bières, vins, eau minérale.
-            </div>
+            <div class="menu-card-desc">Bissap, Gnanmankoudji, Bandji, bières, vins, eau minérale.</div>
             <div class="menu-card-price">À partir de 500 Frcfa</div>
           </div>
         </article>
@@ -589,10 +583,10 @@
     <!-- LOCALISATION -->
     <section>
       <h2>📍 Localisation</h2>
-      <p>La Paillote du Chasseur – Sapia, Daloa, Côte d’Ivoire.</p>
+      <p>La Paillote du Chasseur – Sapia, Daloa, Côte d'Ivoire.</p>
 
       <div class="card-soft">
-        <iframe 
+        <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.123456789!2d-3.990000!3d5.360000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Paillote%20du%20Chasseur!5e0!3m2!1sfr!2sci!4v0000000000000"
           width="100%" height="320" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy">
         </iframe>
@@ -608,7 +602,7 @@
 
     <!-- HORAIRES -->
     <section>
-      <h2>🕒 Horaires d’ouverture</h2>
+      <h2>🕒 Horaires d'ouverture</h2>
       <div class="card-soft hours">
         <p><span>Lundi</span><span>11h00 – 23h00</span></p>
         <p><span>Mardi</span><span>11h00 – 23h00</span></p>
@@ -629,22 +623,21 @@
         <a href="tel:+2250757766271" class="btn btn-phone">
           📞 <span>Appeler maintenant</span>
         </a>
-
         <a href="mailto:contact@lapailloteduchasseur.ci" class="btn btn-email">
           ✉️ <span>Envoyer un email</span>
         </a>
-
         <a href="https://wa.me/2250757766271" target="_blank" class="btn btn-whatsapp">
           🟢 <span>WhatsApp</span>
         </a>
       </div>
     </section>
+
     <!-- AVIS CLIENTS – FORMULAIRE -->
     <section>
       <h2>⭐ Donnez votre avis</h2>
       <p>Partagez votre expérience à La Paillote du Chasseur. Votre avis nous aide à améliorer notre service.</p>
 
-      <form class="avis-form" id="avisForm">
+      <div class="avis-form" id="avisForm">
         <label>Votre nom</label>
         <input type="text" id="avisNom" required>
 
@@ -657,33 +650,30 @@
           <span class="star" data-value="5">★</span>
         </div>
         <input type="hidden" id="avisNote" value="5">
-        
+
         <label>Votre avis</label>
         <textarea id="avisTexte" required></textarea>
 
         <label>Ajouter une photo (optionnel)</label>
         <input type="file" id="avisPhoto" accept="image/*">
 
-        <button type="submit">Envoyer mon avis</button>
+        <button type="button" id="btnEnvoyer">Envoyer mon avis</button>
         <p id="avisMessage" style="margin-top:8px;font-size:13px;color:var(--muted);"></p>
-      </form>
+      </div>
     </section>
 
     <!-- AVIS CLIENTS – LISTE PUBLIQUE -->
     <section>
       <h2>🗣 Avis de nos clients</h2>
       <p>Voici les avis validés par La Paillote du Chasseur.</p>
-
-      <div class="avis-list" id="avisList">
-        <!-- Avis chargés automatiquement depuis Google Sheets -->
-      </div>
+      <div class="avis-list" id="avisList"></div>
     </section>
 
     <!-- GALERIE PHOTOS PREMIUM -->
     <section id="galerie" style="margin-top:40px;">
       <h2>📸 Galerie photos</h2>
       <p style="color:#bbb; margin-bottom:20px;">
-        Découvrez l’ambiance, les plats et l’expérience unique de La Paillote du Chasseur.
+        Découvrez l'ambiance, les plats et l'expérience unique de La Paillote du Chasseur.
       </p>
 
       <div class="galerie-grid">
@@ -708,101 +698,112 @@
     © 2026 La Paillote du Chasseur – Tous droits réservés
   </footer>
 
-  <a href="https://wa.me/2250757766271" class="whatsapp-float" target="_blank">
-    🟢
-  </a>
+  <a href="https://wa.me/2250757766271" class="whatsapp-float" target="_blank">🟢</a>
+
 <script>
-  // Étoiles cliquables
-  const stars = document.querySelectorAll('.star');
+  // ─── URL APPS SCRIPT ───────────────────────────────────────────────────────
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec";
+
+  // ─── ÉTOILES CLIQUABLES ────────────────────────────────────────────────────
+  const starsEl = document.querySelectorAll('.star');
   const noteInput = document.getElementById('avisNote');
 
-  stars.forEach(star => {
+  starsEl.forEach(star => {
     star.addEventListener('click', () => {
       const value = parseInt(star.getAttribute('data-value'), 10);
       noteInput.value = value;
-      stars.forEach(s => {
-        const v = parseInt(s.getAttribute('data-value'), 10);
-        if (v <= value) s.classList.add('active');
-        else s.classList.remove('active');
+      starsEl.forEach(s => {
+        s.classList.toggle('active', parseInt(s.getAttribute('data-value'), 10) <= value);
       });
     });
   });
 
+  // Initialiser 5 étoiles par défaut
   window.addEventListener('DOMContentLoaded', () => {
-    stars.forEach(s => {
-      if (parseInt(s.getAttribute('data-value'), 10) <= 5) s.classList.add('active');
-    });
+    starsEl.forEach(s => s.classList.add('active'));
     chargerAvis();
   });
 
-  // ENVOI AVIS VERS GOOGLE APPS SCRIPT
-  const avisForm = document.getElementById('avisForm');
-  const avisMessage = document.getElementById('avisMessage');
-
-  avisForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    avisMessage.textContent = "Envoi en cours...";
-
-    const nom = document.getElementById('avisNom').value.trim();
-    const note = document.getElementById('avisNote').value;
+  // ─── ENVOI AVIS ────────────────────────────────────────────────────────────
+  // CORRECTION CORS : on utilise mode "no-cors" + on garde JSON
+  document.getElementById('btnEnvoyer').addEventListener('click', async () => {
+    const nom   = document.getElementById('avisNom').value.trim();
+    const note  = document.getElementById('avisNote').value;
     const texte = document.getElementById('avisTexte').value.trim();
-    const photoInput = document.getElementById('avisPhoto');
+    const avisMessage = document.getElementById('avisMessage');
+    const btn   = document.getElementById('btnEnvoyer');
 
-    let photoBase64 = "";
-    if (photoInput.files && photoInput.files[0]) {
-      const file = photoInput.files[0];
-      photoBase64 = await toBase64(file);
+    if (!nom || !texte) {
+      avisMessage.style.color = "#e07070";
+      avisMessage.textContent = "Veuillez remplir votre nom et votre avis.";
+      return;
     }
 
-    try {
-      // TON URL APPS SCRIPT
-      const url = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec";
+    const photoInput = document.getElementById('avisPhoto');
+    let photoBase64 = "";
+    if (photoInput.files && photoInput.files[0]) {
+      photoBase64 = await toBase64(photoInput.files[0]);
+    }
 
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours...";
+    avisMessage.style.color = "var(--muted)";
+    avisMessage.textContent = "";
+
+    try {
       const payload = { nom, note, texte, photo: photoBase64 };
 
-      const res = await fetch(url, {
+      // no-cors contourne le blocage CORS du navigateur
+      await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        headers: {"Content-Type":"application/json"},
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
 
-      if (res.ok) {
-        avisMessage.textContent = "Merci ! Votre avis a été envoyé.";
-        avisForm.reset();
-        document.getElementById('avisNote').value = 5;
-        stars.forEach(s => {
-          const v = parseInt(s.getAttribute('data-value'), 10);
-          if (v <= 5) s.classList.add('active');
-          else s.classList.remove('active');
-        });
-      } else {
-        avisMessage.textContent = "Une erreur est survenue. Merci de réessayer.";
-      }
+      // Avec no-cors on ne peut pas lire la réponse → on considère OK
+      avisMessage.style.color = "#6fcf97";
+      avisMessage.textContent = "✅ Merci ! Votre avis a bien été envoyé. Il sera publié après validation.";
+
+      // Reset du formulaire
+      document.getElementById('avisNom').value = "";
+      document.getElementById('avisTexte').value = "";
+      document.getElementById('avisPhoto').value = "";
+      noteInput.value = 5;
+      starsEl.forEach(s => s.classList.add('active'));
+
     } catch (err) {
-      avisMessage.textContent = "Impossible d’envoyer l’avis pour le moment.";
+      avisMessage.style.color = "#e07070";
+      avisMessage.textContent = "❌ Impossible d'envoyer l'avis. Vérifiez votre connexion et réessayez.";
     }
+
+    btn.disabled = false;
+    btn.textContent = "Envoyer mon avis";
   });
 
   function toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
+      reader.onload  = () => resolve(reader.result);
       reader.onerror = error => reject(error);
       reader.readAsDataURL(file);
     });
   }
 
-  // CHARGER LES AVIS VALIDÉS DEPUIS GOOGLE SHEETS
+  // ─── CHARGER LES AVIS VALIDÉS ──────────────────────────────────────────────
   async function chargerAvis() {
     try {
-      const url = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec?mode=list";
-
-      const res = await fetch(url);
+      const res = await fetch(APPS_SCRIPT_URL + "?mode=list");
       if (!res.ok) return;
 
       const data = await res.json();
       const container = document.getElementById('avisList');
       container.innerHTML = "";
+
+      if (data.length === 0) {
+        container.innerHTML = '<p style="color:#777;font-size:14px;">Aucun avis pour le moment.</p>';
+        return;
+      }
 
       data.forEach(item => {
         const card = document.createElement('div');
@@ -817,7 +818,7 @@
 
         const starsDiv = document.createElement('div');
         starsDiv.className = "avis-stars";
-        starsDiv.textContent = "★".repeat(parseInt(item.note,10));
+        starsDiv.textContent = "★".repeat(parseInt(item.note, 10));
 
         header.appendChild(name);
         header.appendChild(starsDiv);
@@ -833,6 +834,7 @@
           const img = document.createElement('img');
           img.className = "avis-photo";
           img.src = item.photoUrl;
+          img.alt = "Photo de " + item.nom;
           card.appendChild(img);
         }
 
@@ -843,15 +845,16 @@
 
         container.appendChild(card);
       });
+
     } catch (err) {
       // silencieux
     }
   }
 
-  // LIGHTBOX GALERIE
-  const lightbox = document.getElementById("lightbox");
+  // ─── LIGHTBOX GALERIE ──────────────────────────────────────────────────────
+  const lightbox    = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
-  const closeBtn = document.querySelector(".close-lightbox");
+  const closeBtn    = document.querySelector(".close-lightbox");
 
   document.querySelectorAll(".galerie-img").forEach(img => {
     img.addEventListener("click", () => {
@@ -860,17 +863,11 @@
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
-
+  closeBtn.addEventListener("click", () => { lightbox.style.display = "none"; });
   lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.style.display = "none";
-    }
+    if (e.target === lightbox) lightbox.style.display = "none";
   });
 </script>
 
 </body>
 </html>
-
