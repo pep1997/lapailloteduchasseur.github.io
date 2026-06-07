@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <meta name="theme-color" content="#0d0b08">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
   <title>La Paillote du Chasseur – Restaurant Africain · Daloa</title>
   <meta name="description" content="Restaurant africain authentique à Daloa, Côte d'Ivoire. Viandes de chasse, braisés, spécialités traditionnelles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -582,7 +583,11 @@
 
     .menu-row-name { color: var(--text2); font-size: 14px; font-weight: 300; flex: 1; min-width: 0; }
     .menu-row-dots { flex: 1; border-bottom: 1px dotted rgba(255,255,255,0.08); align-self: flex-end; margin-bottom: 5px; min-width: 16px; }
-    .menu-row-price { color: var(--gold); font-size: 13px; font-weight: 500; white-space: nowrap; }
+    .menu-row-price { color: var(--gold) !important; font-size: 13px; font-weight: 500; white-space: nowrap; -webkit-text-fill-color: var(--gold) !important; text-decoration: none !important; }
+    /* Disable iOS Safari auto-detection coloring in entire menu */
+    .menu-table, .menu-table * { -webkit-text-fill-color: inherit; color: inherit; text-decoration: none !important; }
+    .menu-table .menu-row-name  { color: var(--text2) !important; -webkit-text-fill-color: var(--text2) !important; }
+    .menu-table .menu-row-price { color: var(--gold)  !important; -webkit-text-fill-color: var(--gold)  !important; }
 
     /* ══════════════════════════════════════════════════
        LOCALISATION & HORAIRES
@@ -1223,6 +1228,13 @@
     /* ══════════════════════════════════════════════════
        PRINT — optional
     ══════════════════════════════════════════════════ */
+    /* Extra iOS Safari fix - prevent any auto-detected link colors */
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+      -webkit-text-fill-color: inherit !important;
+    }
+
     @media print {
       nav, .whatsapp-fab, .lightbox, .hero-scroll-hint { display: none !important; }
       body { background: #fff; color: #000; }
