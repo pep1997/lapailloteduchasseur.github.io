@@ -467,8 +467,7 @@
     }
   </style>
 </head>
-
-<body>
+  <body>
 
   <header>
     <img src="Logo.jpg.png" alt="Logo La Paillote du Chasseur" class="Logo">
@@ -611,13 +610,13 @@
     <section>
       <h2>🕒 Horaires d’ouverture</h2>
       <div class="card-soft hours">
-        <p><span>Lundi</span><span>Fermer</span></p>
-        <p><span>Mardi</span><span>12h00 – 18h00</span></p>
-        <p><span>Mercredi</span><span>12h00 – 18h00</span></p>
-        <p><span>Jeudi</span><span>12h00 – 18h00</span></p>
-        <p><span>Vendredi</span><span>12h00 – 18h00</span></p>
-        <p><span>Samedi</span><span>11h00 – 19h00</span></p>
-        <p><span>Dimanche</span><span>11h00 – 19h00</span></p>
+        <p><span>Lundi</span><span>11h00 – 23h00</span></p>
+        <p><span>Mardi</span><span>11h00 – 23h00</span></p>
+        <p><span>Mercredi</span><span>11h00 – 23h00</span></p>
+        <p><span>Jeudi</span><span>11h00 – 23h00</span></p>
+        <p><span>Vendredi</span><span>11h00 – 00h00</span></p>
+        <p><span>Samedi</span><span>11h00 – 00h00</span></p>
+        <p><span>Dimanche</span><span>12h00 – 22h00</span></p>
       </div>
     </section>
 
@@ -631,7 +630,7 @@
           📞 <span>Appeler maintenant</span>
         </a>
 
-        <a href="mailto:lapailloteduchasseur@gmail.com" class="btn btn-email">
+        <a href="mailto:contact@lapailloteduchasseur.ci" class="btn btn-email">
           ✉️ <span>Envoyer un email</span>
         </a>
 
@@ -640,7 +639,6 @@
         </a>
       </div>
     </section>
-
     <!-- AVIS CLIENTS – FORMULAIRE -->
     <section>
       <h2>⭐ Donnez votre avis</h2>
@@ -659,7 +657,7 @@
           <span class="star" data-value="5">★</span>
         </div>
         <input type="hidden" id="avisNote" value="5">
-
+        
         <label>Votre avis</label>
         <textarea id="avisTexte" required></textarea>
 
@@ -713,167 +711,166 @@
   <a href="https://wa.me/2250757766271" class="whatsapp-float" target="_blank">
     🟢
   </a>
+<script>
+  // Étoiles cliquables
+  const stars = document.querySelectorAll('.star');
+  const noteInput = document.getElementById('avisNote');
 
-  <script>
-    // Étoiles cliquables
-    const stars = document.querySelectorAll('.star');
-    const noteInput = document.getElementById('avisNote');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const value = parseInt(star.getAttribute('data-value'), 10);
+      noteInput.value = value;
+      stars.forEach(s => {
+        const v = parseInt(s.getAttribute('data-value'), 10);
+        if (v <= value) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+    });
+  });
 
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        const value = parseInt(star.getAttribute('data-value'), 10);
-        noteInput.value = value;
+  window.addEventListener('DOMContentLoaded', () => {
+    stars.forEach(s => {
+      if (parseInt(s.getAttribute('data-value'), 10) <= 5) s.classList.add('active');
+    });
+    chargerAvis();
+  });
+
+  // ENVOI AVIS VERS GOOGLE APPS SCRIPT
+  const avisForm = document.getElementById('avisForm');
+  const avisMessage = document.getElementById('avisMessage');
+
+  avisForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    avisMessage.textContent = "Envoi en cours...";
+
+    const nom = document.getElementById('avisNom').value.trim();
+    const note = document.getElementById('avisNote').value;
+    const texte = document.getElementById('avisTexte').value.trim();
+    const photoInput = document.getElementById('avisPhoto');
+
+    let photoBase64 = "";
+    if (photoInput.files && photoInput.files[0]) {
+      const file = photoInput.files[0];
+      photoBase64 = await toBase64(file);
+    }
+
+    try {
+      // TON URL APPS SCRIPT
+      const url = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec";
+
+      const payload = { nom, note, texte, photo: photoBase64 };
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok) {
+        avisMessage.textContent = "Merci ! Votre avis a été envoyé.";
+        avisForm.reset();
+        document.getElementById('avisNote').value = 5;
         stars.forEach(s => {
           const v = parseInt(s.getAttribute('data-value'), 10);
-          if (v <= value) s.classList.add('active');
+          if (v <= 5) s.classList.add('active');
           else s.classList.remove('active');
         });
-      });
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      stars.forEach(s => {
-        if (parseInt(s.getAttribute('data-value'), 10) <= 5) s.classList.add('active');
-      });
-      chargerAvis();
-    });
-
-    // ENVOI AVIS VERS GOOGLE APPS SCRIPT
-    const avisForm = document.getElementById('avisForm');
-    const avisMessage = document.getElementById('avisMessage');
-
-    avisForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      avisMessage.textContent = "Envoi en cours...";
-
-      const nom = document.getElementById('avisNom').value.trim();
-      const note = document.getElementById('avisNote').value;
-      const texte = document.getElementById('avisTexte').value.trim();
-      const photoInput = document.getElementById('avisPhoto');
-
-      let photoBase64 = "";
-      if (photoInput.files && photoInput.files[0]) {
-        const file = photoInput.files[0];
-        photoBase64 = await toBase64(file);
+      } else {
+        avisMessage.textContent = "Une erreur est survenue. Merci de réessayer.";
       }
+    } catch (err) {
+      avisMessage.textContent = "Impossible d’envoyer l’avis pour le moment.";
+    }
+  });
 
-      try {
-        // Remplace TON_WEB_APP_URL par l’URL HTTPS de ton Web App
-        const url = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec";
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+      reader.readAsDataURL(file);
+    });
+  }
 
-        const payload = { nom, note, texte, photo: photoBase64 };
+  // CHARGER LES AVIS VALIDÉS DEPUIS GOOGLE SHEETS
+  async function chargerAvis() {
+    try {
+      const url = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec?mode=list";
 
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {"Content-Type":"application/json"},
-          body: JSON.stringify(payload)
-        });
+      const res = await fetch(url);
+      if (!res.ok) return;
 
-        if (res.ok) {
-          avisMessage.textContent = "Merci ! Votre avis a été envoyé.";
-          avisForm.reset();
-          document.getElementById('avisNote').value = 5;
-          stars.forEach(s => {
-            const v = parseInt(s.getAttribute('data-value'), 10);
-            if (v <= 5) s.classList.add('active');
-            else s.classList.remove('active');
-          });
-        } else {
-          avisMessage.textContent = "Une erreur est survenue. Merci de réessayer.";
+      const data = await res.json();
+      const container = document.getElementById('avisList');
+      container.innerHTML = "";
+
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "avis-card";
+
+        const header = document.createElement('div');
+        header.className = "avis-header";
+
+        const name = document.createElement('div');
+        name.className = "avis-name";
+        name.textContent = item.nom;
+
+        const starsDiv = document.createElement('div');
+        starsDiv.className = "avis-stars";
+        starsDiv.textContent = "★".repeat(parseInt(item.note,10));
+
+        header.appendChild(name);
+        header.appendChild(starsDiv);
+
+        const text = document.createElement('div');
+        text.className = "avis-text";
+        text.textContent = item.texte;
+
+        card.appendChild(header);
+        card.appendChild(text);
+
+        if (item.photoUrl) {
+          const img = document.createElement('img');
+          img.className = "avis-photo";
+          img.src = item.photoUrl;
+          card.appendChild(img);
         }
-      } catch (err) {
-        avisMessage.textContent = "Impossible d’envoyer l’avis pour le moment.";
-      }
-    });
 
-    function toBase64(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        reader.readAsDataURL(file);
+        const date = document.createElement('div');
+        date.className = "avis-date";
+        date.textContent = item.date || "";
+        card.appendChild(date);
+
+        container.appendChild(card);
       });
+    } catch (err) {
+      // silencieux
     }
+  }
 
-    // CHARGER LES AVIS VALIDÉS DEPUIS GOOGLE SHEETS
-    async function chargerAvis() {
-      try {
-        // Remplace TON_WEB_APP_URL par l’URL HTTPS de ton Web App (mode GET)
-        const url = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec";
+  // LIGHTBOX GALERIE
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".close-lightbox");
 
-        const res = await fetch(url);
-        if (!res.ok) return;
-
-        const data = await res.json();
-        const container = document.getElementById('avisList');
-        container.innerHTML = "";
-
-        data.forEach(item => {
-          const card = document.createElement('div');
-          card.className = "avis-card";
-
-          const header = document.createElement('div');
-          header.className = "avis-header";
-
-          const name = document.createElement('div');
-          name.className = "avis-name";
-          name.textContent = item.nom;
-
-          const starsDiv = document.createElement('div');
-          starsDiv.className = "avis-stars";
-          starsDiv.textContent = "★".repeat(parseInt(item.note,10));
-
-          header.appendChild(name);
-          header.appendChild(starsDiv);
-
-          const text = document.createElement('div');
-          text.className = "avis-text";
-          text.textContent = item.texte;
-
-          card.appendChild(header);
-          card.appendChild(text);
-
-          if (item.photoUrl) {
-            const img = document.createElement('img');
-            img.className = "avis-photo";
-            img.src = item.photoUrl;
-            card.appendChild(img);
-          }
-
-          const date = document.createElement('div');
-          date.className = "avis-date";
-          date.textContent = item.date || "";
-          card.appendChild(date);
-
-          container.appendChild(card);
-        });
-      } catch (err) {
-        // silencieux
-      }
-    }
-
-    // LIGHTBOX GALERIE
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const closeBtn = document.querySelector(".close-lightbox");
-
-    document.querySelectorAll(".galerie-img").forEach(img => {
-      img.addEventListener("click", () => {
-        lightbox.style.display = "block";
-        lightboxImg.src = img.src;
-      });
+  document.querySelectorAll(".galerie-img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "block";
+      lightboxImg.src = img.src;
     });
+  });
 
-    closeBtn.addEventListener("click", () => {
+  closeBtn.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
       lightbox.style.display = "none";
-    });
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        lightbox.style.display = "none";
-      }
-    });
-  </script>
+    }
+  });
+</script>
 
 </body>
 </html>
+
