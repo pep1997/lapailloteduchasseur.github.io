@@ -321,7 +321,6 @@
       box-shadow:0 8px 20px rgba(196,122,44,0.6);
     }
 
-    /* AVIS LISTE */
     .avis-list {
       margin-top:20px;
       display:grid;
@@ -372,6 +371,65 @@
       font-size:11px;
       color:#777;
       margin-top:4px;
+    }
+
+    /* GALERIE PREMIUM */
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .galerie-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .galerie-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(4px);
+    }
+
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .close-lightbox:hover {
+      color: var(--accent);
     }
 
     footer {
@@ -553,13 +611,13 @@
     <section>
       <h2>🕒 Horaires d’ouverture</h2>
       <div class="card-soft hours">
-        <p><span>Lundi</span><span>11h00 – 23h00</span></p>
-        <p><span>Mardi</span><span>11h00 – 23h00</span></p>
-        <p><span>Mercredi</span><span>11h00 – 23h00</span></p>
-        <p><span>Jeudi</span><span>11h00 – 23h00</span></p>
-        <p><span>Vendredi</span><span>11h00 – 00h00</span></p>
-        <p><span>Samedi</span><span>11h00 – 00h00</span></p>
-        <p><span>Dimanche</span><span>12h00 – 22h00</span></p>
+        <p><span>Lundi</span><span>Fermer</span></p>
+        <p><span>Mardi</span><span>12h00 – 18h00</span></p>
+        <p><span>Mercredi</span><span>12h00 – 18h00</span></p>
+        <p><span>Jeudi</span><span>12h00 – 18h00</span></p>
+        <p><span>Vendredi</span><span>12h00 – 18h00</span></p>
+        <p><span>Samedi</span><span>11h00 – 19h00</span></p>
+        <p><span>Dimanche</span><span>11h00 – 19h00</span></p>
       </div>
     </section>
 
@@ -573,7 +631,7 @@
           📞 <span>Appeler maintenant</span>
         </a>
 
-        <a href="mailto:contact@lapailloteduchasseur.ci" class="btn btn-email">
+        <a href="mailto:lapailloteduchasseur@gmail.com" class="btn btn-email">
           ✉️ <span>Envoyer un email</span>
         </a>
 
@@ -623,7 +681,30 @@
       </div>
     </section>
 
+    <!-- GALERIE PHOTOS PREMIUM -->
+    <section id="galerie" style="margin-top:40px;">
+      <h2>📸 Galerie photos</h2>
+      <p style="color:#bbb; margin-bottom:20px;">
+        Découvrez l’ambiance, les plats et l’expérience unique de La Paillote du Chasseur.
+      </p>
+
+      <div class="galerie-grid">
+        <img src="galerie1.jpg" alt="Photo 1" class="galerie-img">
+        <img src="galerie2.jpg" alt="Photo 2" class="galerie-img">
+        <img src="galerie3.jpg" alt="Photo 3" class="galerie-img">
+        <img src="galerie4.jpg" alt="Photo 4" class="galerie-img">
+        <img src="galerie5.jpg" alt="Photo 5" class="galerie-img">
+        <img src="galerie6.jpg" alt="Photo 6" class="galerie-img">
+      </div>
+    </section>
+
   </main>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
 
   <footer>
     © 2026 La Paillote du Chasseur – Tous droits réservés
@@ -650,7 +731,6 @@
       });
     });
 
-    // Valeur par défaut : 5 étoiles
     window.addEventListener('DOMContentLoaded', () => {
       stars.forEach(s => {
         if (parseInt(s.getAttribute('data-value'), 10) <= 5) s.classList.add('active');
@@ -678,15 +758,10 @@
       }
 
       try {
-        // ⚠️ Remplace l’URL ci-dessous par l’URL de ton Web App Google Apps Script
+        // Remplace TON_WEB_APP_URL par l’URL HTTPS de ton Web App
         const url = "https://script.google.com/macros/s/AKfycbzq5pD2BPreHU1PW-MIy8I82kv9TqmG1t91uuUaOoDbotZTteI7TyOTXua97hlS808n/exec";
 
-        const payload = {
-          nom,
-          note,
-          texte,
-          photo: photoBase64
-        };
+        const payload = { nom, note, texte, photo: photoBase64 };
 
         const res = await fetch(url, {
           method: "POST",
@@ -695,7 +770,7 @@
         });
 
         if (res.ok) {
-          avisMessage.textContent = "Merci ! Votre avis a été envoyé et sera publié après validation.";
+          avisMessage.textContent = "Merci ! Votre avis a été envoyé.";
           avisForm.reset();
           document.getElementById('avisNote').value = 5;
           stars.forEach(s => {
@@ -723,13 +798,13 @@
     // CHARGER LES AVIS VALIDÉS DEPUIS GOOGLE SHEETS
     async function chargerAvis() {
       try {
-        // ⚠️ Remplace l’URL ci-dessous par l’URL de ton Web App Google Apps Script (mode GET)
+        // Remplace TON_WEB_APP_URL par l’URL HTTPS de ton Web App (mode GET)
         const url = "https://script.google.com/macros/s/AKfycbzq5pD2BPreHU1PW-MIy8I82kv9TqmG1t91uuUaOoDbotZTteI7TyOTXua97hlS808n/exec";
 
         const res = await fetch(url);
         if (!res.ok) return;
 
-        const data = await res.json(); // format: [{nom, note, texte, photoUrl, date}, ...]
+        const data = await res.json();
         const container = document.getElementById('avisList');
         container.innerHTML = "";
 
@@ -776,6 +851,28 @@
         // silencieux
       }
     }
+
+    // LIGHTBOX GALERIE
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".close-lightbox");
+
+    document.querySelectorAll(".galerie-img").forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "block";
+        lightboxImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = "none";
+      }
+    });
   </script>
 
 </body>
