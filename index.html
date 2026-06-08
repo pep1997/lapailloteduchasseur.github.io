@@ -39,7 +39,6 @@
       --transition:   0.25s cubic-bezier(0.4,0,0.2,1);
       --font-serif:   'Cormorant Garamond', Georgia, serif;
       --font-sans:    'Outfit', system-ui, sans-serif;
-      /* Safe area support for notched phones */
       --safe-top:    env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --safe-left:   env(safe-area-inset-left, 0px);
@@ -131,6 +130,42 @@
     .nav-links a:hover { color: var(--gold-light); }
     .nav-links a:hover::after { width: 100%; }
 
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      padding: 4px 6px;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--muted);
+      padding: 5px 9px;
+      border-radius: 999px;
+      transition: background var(--transition), color var(--transition);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      line-height: 1;
+    }
+
+    .lang-btn:hover { color: var(--text2); }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--accent), #9a5818);
+      color: #fff;
+    }
+
     /* Hamburger */
     .nav-burger {
       display: none;
@@ -195,6 +230,21 @@
     .nav-drawer a:last-child { border-bottom: none; }
     .nav-drawer a:hover, .nav-drawer a:active { color: var(--gold-light); transform: translateX(4px); }
 
+    /* Mobile drawer lang switcher */
+    .drawer-lang {
+      display: flex;
+      gap: 8px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      width: min(240px, 70vw);
+      justify-content: center;
+    }
+    .drawer-lang .lang-btn {
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+
     /* ══════════════════════════════════════════════════
        HERO
     ══════════════════════════════════════════════════ */
@@ -219,13 +269,11 @@
         linear-gradient(165deg, #1d0e04 0%, #0a0704 40%, #080604 100%);
     }
 
-    /* Grain texture overlay */
     .hero-grain {
       position: absolute; inset: 0; pointer-events: none; opacity: 0.4;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
     }
 
-    /* Decorative ring */
     .hero-ring {
       position: absolute;
       width: min(500px, 80vw); height: min(500px, 80vw);
@@ -471,7 +519,6 @@
       margin-bottom: 48px;
     }
 
-    /* First card spans 2 columns on desktop for hero visual */
     .menu-card:first-child {
       grid-column: span 2;
     }
@@ -584,7 +631,6 @@
     .menu-row-name { color: var(--text2); font-size: 14px; font-weight: 300; flex: 1; min-width: 0; }
     .menu-row-dots { flex: 1; border-bottom: 1px dotted rgba(255,255,255,0.08); align-self: flex-end; margin-bottom: 5px; min-width: 16px; }
     .menu-row-price { color: var(--gold) !important; font-size: 13px; font-weight: 500; white-space: nowrap; -webkit-text-fill-color: var(--gold) !important; text-decoration: none !important; }
-    /* Disable iOS Safari auto-detection coloring in entire menu */
     .menu-table, .menu-table * { -webkit-text-fill-color: inherit; color: inherit; text-decoration: none !important; }
     .menu-table .menu-row-name  { color: var(--text2) !important; -webkit-text-fill-color: var(--text2) !important; }
     .menu-table .menu-row-price { color: var(--gold)  !important; -webkit-text-fill-color: var(--gold)  !important; }
@@ -644,7 +690,6 @@
     }
     .btn-maps:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(196,122,44,0.45); }
 
-    /* Horaires */
     .horaires-card {
       background: var(--card);
       border: 1px solid var(--gold-border);
@@ -737,7 +782,6 @@
     .btn-wa   { background: var(--green); color: #fff; }
     .btn-wa:hover { box-shadow: 0 14px 35px rgba(37,211,102,0.4); }
 
-    /* Social media */
     .social-links {
       display: flex;
       gap: 12px;
@@ -811,7 +855,6 @@
 
     textarea.form-input { resize: vertical; min-height: 110px; line-height: 1.6; }
 
-    /* File upload */
     .file-upload-label {
       display: flex;
       align-items: center;
@@ -834,7 +877,6 @@
     }
     #avisPhoto { display: none; }
 
-    /* Stars */
     .stars-row { display: flex; gap: 6px; font-size: 32px; cursor: pointer; }
     .star-item {
       color: rgba(255,255,255,0.12);
@@ -846,7 +888,6 @@
     .star-item.lit { color: #f0b429; }
     .star-item:hover { transform: scale(1.15); }
 
-    /* Submit */
     .btn-submit {
       width: 100%;
       padding: 15px;
@@ -877,7 +918,6 @@
     }
     #msgRetour.visible { padding: 10px 14px; background: rgba(0,0,0,0.25); }
 
-    /* ── Avis list ── */
     .avis-list {
       display: flex;
       flex-direction: column;
@@ -1072,7 +1112,7 @@
     }
 
     /* ══════════════════════════════════════════════════
-       TABLETTE — 769px à 1100px
+       TABLETTE
     ══════════════════════════════════════════════════ */
     @media (max-width: 1100px) and (min-width: 769px) {
       nav { padding: 14px 28px; }
@@ -1101,16 +1141,16 @@
     }
 
     /* ══════════════════════════════════════════════════
-       MOBILE — ≤ 768px
+       MOBILE
     ══════════════════════════════════════════════════ */
     @media (max-width: 768px) {
-      /* Nav */
       nav { padding: 14px 18px; padding-top: calc(14px + var(--safe-top)); }
       nav.scrolled { padding: 11px 18px; padding-top: calc(11px + var(--safe-top)); }
       .nav-links { display: none !important; }
+      /* hide lang switcher from nav on mobile — it's in the drawer instead */
+      nav .lang-switcher { display: none; }
       .nav-burger { display: flex; }
 
-      /* Hero */
       header { padding: 90px 20px 80px; min-height: 100dvh; }
       .hero-ring { display: none; }
       .hero-scroll-hint { display: none; }
@@ -1120,18 +1160,15 @@
       .pill { font-size: 11px; padding: 6px 13px; }
       .hero-cta { padding: 13px 28px; font-size: 12px; }
 
-      /* Main */
       main { padding: 60px 16px 50px; }
       section { margin-bottom: 64px; }
       h2 { font-size: clamp(24px, 6vw, 32px); }
 
-      /* À propos */
       .apropos-layout { grid-template-columns: 1fr; gap: 28px; }
       .stats-grid { gap: 10px; }
       .stat-card { padding: 18px 12px; }
       .stat-num { font-size: 28px; }
 
-      /* Menu featured — horizontal scroll on mobile */
       .menu-featured {
         display: flex;
         flex-direction: row;
@@ -1140,7 +1177,6 @@
         -webkit-overflow-scrolling: touch;
         gap: 12px;
         padding-bottom: 10px;
-        /* hide scrollbar on mobile for cleaner look */
         scrollbar-width: none;
         -ms-overflow-style: none;
       }
@@ -1157,7 +1193,6 @@
       .menu-card:first-child .menu-card-img,
       .menu-card-img { height: 185px; }
 
-      /* Scroll indicator for carousel */
       .scroll-hint-text {
         display: block;
         font-size: 11px;
@@ -1167,40 +1202,30 @@
         letter-spacing: 0.5px;
       }
 
-      /* Full menu */
       .menu-row { font-size: 13px; }
       .menu-row-dots { min-width: 10px; }
 
-      /* Location */
       .loc-layout { grid-template-columns: 1fr; gap: 16px; }
       .map-card iframe { height: 220px; }
       .map-footer { flex-direction: column; align-items: stretch; }
       .btn-maps { width: 100%; justify-content: center; text-align: center; }
 
-      /* Contact */
       .contact-grid { grid-template-columns: 1fr; gap: 28px; }
 
-      /* Avis */
       .avis-layout { grid-template-columns: 1fr; gap: 28px; }
       .avis-form { padding: 22px 18px; }
-      .form-input { font-size: 16px; /* prevent iOS zoom */ }
+      .form-input { font-size: 16px; }
 
-      /* Galerie */
       .galerie-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
       .galerie-item:first-child { grid-column: span 2; }
       .galerie-img { height: 155px; }
       .galerie-item:first-child .galerie-img { height: 195px; }
 
-      /* Lightbox */
       .lb-img { max-width: 95vw; max-height: 80dvh; }
 
-      /* Fab */
       .whatsapp-fab { width: 52px; height: 52px; font-size: 22px; }
     }
 
-    /* ══════════════════════════════════════════════════
-       TRÈS PETIT MOBILE — ≤ 400px
-    ══════════════════════════════════════════════════ */
     @media (max-width: 400px) {
       .galerie-grid { grid-template-columns: 1fr; }
       .galerie-item:first-child { grid-column: span 1; }
@@ -1214,9 +1239,6 @@
       .menu-card:first-child { flex: 0 0 88vw; }
     }
 
-    /* ══════════════════════════════════════════════════
-       LARGE DESKTOP — ≥ 1400px
-    ══════════════════════════════════════════════════ */
     @media (min-width: 1400px) {
       main { max-width: 1260px; padding: 100px 60px 80px; }
       .menu-featured { grid-template-columns: repeat(3, 1fr); }
@@ -1225,10 +1247,6 @@
       .map-card iframe { height: 340px; }
     }
 
-    /* ══════════════════════════════════════════════════
-       PRINT — optional
-    ══════════════════════════════════════════════════ */
-    /* Extra iOS Safari fix - prevent any auto-detected link colors */
     a[x-apple-data-detectors] {
       color: inherit !important;
       text-decoration: none !important;
@@ -1248,12 +1266,19 @@
     <a href="#" class="nav-logo">La Paillote du Chasseur</a>
 
     <ul class="nav-links">
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#localisation">Localisation</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#avis">Avis</a></li>
-      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+      <li><a href="#localisation" data-i18n="nav.loc">Localisation</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="#avis" data-i18n="nav.avis">Avis</a></li>
+      <li><a href="#galerie" data-i18n="nav.galerie">Galerie</a></li>
     </ul>
+
+    <!-- Language switcher (desktop) -->
+    <div class="lang-switcher" aria-label="Language selector">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
 
     <button class="nav-burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -1262,11 +1287,17 @@
 
   <!-- Mobile drawer -->
   <div class="nav-drawer" id="drawer" role="dialog" aria-label="Menu de navigation">
-    <a href="#menu"         onclick="closeDrawer()">Menu</a>
-    <a href="#localisation" onclick="closeDrawer()">Localisation</a>
-    <a href="#contact"      onclick="closeDrawer()">Contact</a>
-    <a href="#avis"         onclick="closeDrawer()">Avis</a>
-    <a href="#galerie"      onclick="closeDrawer()">Galerie</a>
+    <a href="#menu"         data-i18n="nav.menu"    onclick="closeDrawer()">Menu</a>
+    <a href="#localisation" data-i18n="nav.loc"     onclick="closeDrawer()">Localisation</a>
+    <a href="#contact"      data-i18n="nav.contact" onclick="closeDrawer()">Contact</a>
+    <a href="#avis"         data-i18n="nav.avis"    onclick="closeDrawer()">Avis</a>
+    <a href="#galerie"      data-i18n="nav.galerie" onclick="closeDrawer()">Galerie</a>
+    <!-- Language switcher (mobile drawer) -->
+    <div class="drawer-lang">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
   </div>
 
   <!-- ╔══ HERO ══╗ -->
@@ -1276,20 +1307,20 @@
     <div class="hero-ring"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">Cuisine Africaine Authentique</div>
+      <div class="hero-eyebrow" data-i18n="hero.eyebrow">Cuisine Africaine Authentique</div>
       <img src="Logo.jpg.png" alt="Logo La Paillote du Chasseur" class="hero-logo">
       <h1>La Paillote<br>du Chasseur</h1>
-      <p class="hero-sub">Saveurs de brousse, braisés &amp; spécialités de chasse<br>— Daloa, Côte d'Ivoire —</p>
+      <p class="hero-sub" data-i18n="hero.sub">Saveurs de brousse, braisés &amp; spécialités de chasse<br>— Daloa, Côte d'Ivoire —</p>
       <div class="hero-pills">
         <div class="pill">📍 Sapia, Daloa</div>
-        <div class="pill">🕒 Mar – Dim</div>
+        <div class="pill" data-i18n="hero.pill.hours">🕒 Mar – Dim</div>
         <div class="pill">📞 +225 07 57 76 62 71</div>
       </div>
-      <a href="#menu" class="hero-cta">Découvrir le menu →</a>
+      <a href="#menu" class="hero-cta" data-i18n="hero.cta">Découvrir le menu →</a>
     </div>
 
     <div class="hero-scroll-hint">
-      <span>Défiler</span>
+      <span data-i18n="hero.scroll">Défiler</span>
       <div class="scroll-bar"></div>
     </div>
   </header>
@@ -1298,42 +1329,42 @@
 
     <!-- ╔══ À PROPOS ══╗ -->
     <section class="reveal">
-      <span class="section-label">Notre histoire</span>
-      <h2>Un restaurant au cœur de la tradition</h2>
+      <span class="section-label" data-i18n="about.label">Notre histoire</span>
+      <h2 data-i18n="about.title">Un restaurant au cœur de la tradition</h2>
       <div class="divider"></div>
       <div class="apropos-layout">
         <div class="apropos-text">
-          <p>La Paillote du Chasseur vous accueille dans une ambiance chaleureuse, autour d'une cuisine africaine authentique, inspirée des saveurs de la brousse et des recettes traditionnelles. Viandes de chasse, braisés, soupes épicées, garnitures généreuses : chaque plat est préparé avec soin.</p>
-          <p>Nous travaillons avec des producteurs locaux pour garantir la fraîcheur et l'authenticité de chaque assiette. Venez partager un moment unique dans un cadre qui respire la savane ivoirienne.</p>
+          <p data-i18n="about.p1">La Paillote du Chasseur vous accueille dans une ambiance chaleureuse, autour d'une cuisine africaine authentique, inspirée des saveurs de la brousse et des recettes traditionnelles. Viandes de chasse, braisés, soupes épicées, garnitures généreuses : chaque plat est préparé avec soin.</p>
+          <p data-i18n="about.p2">Nous travaillons avec des producteurs locaux pour garantir la fraîcheur et l'authenticité de chaque assiette. Venez partager un moment unique dans un cadre qui respire la savane ivoirienne.</p>
         </div>
         <div class="stats-grid">
-          <div class="stat-card"><div class="stat-num">20+</div><div class="stat-lbl">Spécialités</div></div>
-          <div class="stat-card"><div class="stat-num">6j</div><div class="stat-lbl">Mar – Dim</div></div>
-          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Produits locaux</div></div>
-          <div class="stat-card"><div class="stat-num">★4.8</div><div class="stat-lbl">Note clients</div></div>
+          <div class="stat-card"><div class="stat-num">20+</div><div class="stat-lbl" data-i18n="stats.specialties">Spécialités</div></div>
+          <div class="stat-card"><div class="stat-num">6j</div><div class="stat-lbl" data-i18n="stats.days">Mar – Dim</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl" data-i18n="stats.local">Produits locaux</div></div>
+          <div class="stat-card"><div class="stat-num">★4.8</div><div class="stat-lbl" data-i18n="stats.rating">Note clients</div></div>
         </div>
       </div>
     </section>
 
     <!-- ╔══ MENU ══╗ -->
     <section id="menu" class="reveal">
-      <span class="section-label">Restauration</span>
-      <h2>Menu – Sélection du chef</h2>
+      <span class="section-label" data-i18n="menu.label">Restauration</span>
+      <h2 data-i18n="menu.title">Menu – Sélection du chef</h2>
       <div class="divider"></div>
 
-      <span class="scroll-hint-text">← Faites défiler les plats →</span>
+      <span class="scroll-hint-text" data-i18n="menu.scroll">← Faites défiler les plats →</span>
 
       <div class="menu-featured">
         <article class="menu-card">
           <div class="menu-card-img-wrap">
             <img class="menu-card-img" src="carpe-braisee.jpg.png" alt="Carpe braisée" loading="lazy">
             <div class="menu-card-overlay"></div>
-            <span class="menu-card-badge">⭐ Best-seller</span>
+            <span class="menu-card-badge" data-i18n="menu.bestseller">⭐ Best-seller</span>
           </div>
           <div class="menu-card-body">
-            <div class="menu-card-title">Carpe braisée entière</div>
-            <div class="menu-card-desc">Carpe entière grillée à la braise, servie avec attiéké et sauce épicée.</div>
-            <span class="menu-card-price">À partir de 5 000 Frcfa</span>
+            <div class="menu-card-title" data-i18n="dish.carpe.title">Carpe braisée entière</div>
+            <div class="menu-card-desc" data-i18n="dish.carpe.desc">Carpe entière grillée à la braise, servie avec attiéké et sauce épicée.</div>
+            <span class="menu-card-price" data-i18n="dish.carpe.price">À partir de 5 000 Frcfa</span>
           </div>
         </article>
 
@@ -1343,8 +1374,8 @@
             <div class="menu-card-overlay"></div>
           </div>
           <div class="menu-card-body">
-            <div class="menu-card-title">Poulet africain braisé</div>
-            <div class="menu-card-desc">Poulet entier doré et croustillant, accompagné d'attiéké ou d'igname grillée.</div>
+            <div class="menu-card-title" data-i18n="dish.poulet.title">Poulet africain braisé</div>
+            <div class="menu-card-desc" data-i18n="dish.poulet.desc">Poulet entier doré et croustillant, accompagné d'attiéké ou d'igname grillée.</div>
             <span class="menu-card-price">4 000 – 8 000 Frcfa</span>
           </div>
         </article>
@@ -1355,8 +1386,8 @@
             <div class="menu-card-overlay"></div>
           </div>
           <div class="menu-card-body">
-            <div class="menu-card-title">Escargots sautés</div>
-            <div class="menu-card-desc">Escargots sautés à la sauce rouge brillante, servis bien relevés.</div>
+            <div class="menu-card-title" data-i18n="dish.escargots.title">Escargots sautés</div>
+            <div class="menu-card-desc" data-i18n="dish.escargots.desc">Escargots sautés à la sauce rouge brillante, servis bien relevés.</div>
             <span class="menu-card-price">5 000 – 10 000 Frcfa</span>
           </div>
         </article>
@@ -1367,8 +1398,8 @@
             <div class="menu-card-overlay"></div>
           </div>
           <div class="menu-card-body">
-            <div class="menu-card-title">Soupe de cabri</div>
-            <div class="menu-card-desc">Morceaux de cabri tendres dans une sauce rouge épicée, servis bien chauds.</div>
+            <div class="menu-card-title" data-i18n="dish.cabri.title">Soupe de cabri</div>
+            <div class="menu-card-desc" data-i18n="dish.cabri.desc">Morceaux de cabri tendres dans une sauce rouge épicée, servis bien chauds.</div>
             <span class="menu-card-price">2 000 Frcfa</span>
           </div>
         </article>
@@ -1379,9 +1410,9 @@
             <div class="menu-card-overlay"></div>
           </div>
           <div class="menu-card-body">
-            <div class="menu-card-title">Garnitures</div>
-            <div class="menu-card-desc">Attiéké, alloco, alloco huile rouge, riz, frites, igname grillée.</div>
-            <span class="menu-card-price">À partir de 500 Frcfa</span>
+            <div class="menu-card-title" data-i18n="dish.garnitures.title">Garnitures</div>
+            <div class="menu-card-desc" data-i18n="dish.garnitures.desc">Attiéké, alloco, alloco huile rouge, riz, frites, igname grillée.</div>
+            <span class="menu-card-price" data-i18n="dish.garnitures.price">À partir de 500 Frcfa</span>
           </div>
         </article>
 
@@ -1391,15 +1422,15 @@
             <div class="menu-card-overlay"></div>
           </div>
           <div class="menu-card-body">
-            <div class="menu-card-title">Boissons maison</div>
-            <div class="menu-card-desc">Bissap, Gnanmankoudji, Bandji, bières, vins, eau minérale.</div>
-            <span class="menu-card-price">À partir de 500 Frcfa</span>
+            <div class="menu-card-title" data-i18n="dish.boissons.title">Boissons maison</div>
+            <div class="menu-card-desc" data-i18n="dish.boissons.desc">Bissap, Gnanmankoudji, Bandji, bières, vins, eau minérale.</div>
+            <span class="menu-card-price" data-i18n="dish.boissons.price">À partir de 500 Frcfa</span>
           </div>
         </article>
       </div>
 
       <!-- Carte complète -->
-      <div class="carte-section-title"><h3>Carte complète</h3></div>
+      <div class="carte-section-title"><h3 data-i18n="menu.full">Carte complète</h3></div>
       <div class="menu-table">
         <div class="menu-row"><span class="menu-row-name">Soupe de cabris</span><span class="menu-row-dots"></span><span class="menu-row-price">2 000 Frcfa</span></div>
         <div class="menu-row"><span class="menu-row-name">Cabris sauté / braisé</span><span class="menu-row-dots"></span><span class="menu-row-price">6 000 Frcfa</span></div>
@@ -1422,8 +1453,8 @@
 
     <!-- ╔══ LOCALISATION ══╗ -->
     <section id="localisation" class="reveal">
-      <span class="section-label">Nous trouver</span>
-      <h2>Localisation &amp; Horaires</h2>
+      <span class="section-label" data-i18n="loc.label">Nous trouver</span>
+      <h2 data-i18n="loc.title">Localisation &amp; Horaires</h2>
       <div class="divider"></div>
       <div class="loc-layout">
         <div class="map-card">
@@ -1435,45 +1466,45 @@
           </iframe>
           <div class="map-footer">
             <span class="map-address-text">📍 Sapia, Daloa, Côte d'Ivoire</span>
-            <a href="https://maps.app.goo.gl/KHdp5j7A3FnFXDXw7?g_st=iw" target="_blank" rel="noopener" class="btn-maps">
+            <a href="https://maps.app.goo.gl/KHdp5j7A3FnFXDXw7?g_st=iw" target="_blank" rel="noopener" class="btn-maps" data-i18n="loc.maps">
               Ouvrir dans Maps ↗
             </a>
           </div>
         </div>
 
         <div class="horaires-card">
-          <div class="horaires-header">🕒 Horaires d'ouverture</div>
-          <div class="hours-row" id="day-1"><span class="hours-day">Lundi</span><span class="hours-time closed">Fermé</span></div>
-          <div class="hours-row" id="day-2"><span class="hours-day">Mardi</span><span class="hours-time">12h00 – 18h00</span></div>
-          <div class="hours-row" id="day-3"><span class="hours-day">Mercredi</span><span class="hours-time">12h00 – 18h00</span></div>
-          <div class="hours-row" id="day-4"><span class="hours-day">Jeudi</span><span class="hours-time">12h00 – 18h00</span></div>
-          <div class="hours-row" id="day-5"><span class="hours-day">Vendredi</span><span class="hours-time">12h00 – 18h00</span></div>
-          <div class="hours-row" id="day-6"><span class="hours-day">Samedi</span><span class="hours-time">11h30 – 19h00</span></div>
-          <div class="hours-row" id="day-0"><span class="hours-day">Dimanche</span><span class="hours-time">11h30 – 19h00</span></div>
+          <div class="horaires-header" data-i18n="loc.hours.title">🕒 Horaires d'ouverture</div>
+          <div class="hours-row" id="day-1"><span class="hours-day" data-i18n="day.1">Lundi</span><span class="hours-time closed" data-i18n="closed">Fermé</span></div>
+          <div class="hours-row" id="day-2"><span class="hours-day" data-i18n="day.2">Mardi</span><span class="hours-time">12h00 – 18h00</span></div>
+          <div class="hours-row" id="day-3"><span class="hours-day" data-i18n="day.3">Mercredi</span><span class="hours-time">12h00 – 18h00</span></div>
+          <div class="hours-row" id="day-4"><span class="hours-day" data-i18n="day.4">Jeudi</span><span class="hours-time">12h00 – 18h00</span></div>
+          <div class="hours-row" id="day-5"><span class="hours-day" data-i18n="day.5">Vendredi</span><span class="hours-time">12h00 – 18h00</span></div>
+          <div class="hours-row" id="day-6"><span class="hours-day" data-i18n="day.6">Samedi</span><span class="hours-time">11h30 – 19h00</span></div>
+          <div class="hours-row" id="day-0"><span class="hours-day" data-i18n="day.0">Dimanche</span><span class="hours-time">11h30 – 19h00</span></div>
         </div>
       </div>
     </section>
 
     <!-- ╔══ CONTACT ══╗ -->
     <section id="contact" class="reveal">
-      <span class="section-label">Nous contacter</span>
-      <h2>Réservations &amp; Contact</h2>
+      <span class="section-label" data-i18n="contact.label">Nous contacter</span>
+      <h2 data-i18n="contact.title">Réservations &amp; Contact</h2>
       <div class="divider"></div>
       <div class="contact-grid">
         <div>
-          <p>Pour réserver une table, commander un plat ou organiser un événement privé, contactez-nous directement :</p>
+          <p data-i18n="contact.p">Pour réserver une table, commander un plat ou organiser un événement privé, contactez-nous directement :</p>
           <div class="contact-btns">
             <a href="tel:+2250757766271" class="btn-contact btn-tel">
               <div class="btn-ico">📞</div>
               <div class="btn-info">
-                <span class="btn-sub">Appeler maintenant</span>
+                <span class="btn-sub" data-i18n="contact.call">Appeler maintenant</span>
                 <span>+225 07 57 76 62 71</span>
               </div>
             </a>
             <a href="mailto:lapailloteduchasseur@gmail.com" class="btn-contact btn-mail">
               <div class="btn-ico">✉️</div>
               <div class="btn-info">
-                <span class="btn-sub">Envoyer un email</span>
+                <span class="btn-sub" data-i18n="contact.email">Envoyer un email</span>
                 <span>lapailloteduchasseur@gmail.com</span>
               </div>
             </a>
@@ -1481,41 +1512,40 @@
               <div class="btn-ico">💬</div>
               <div class="btn-info">
                 <span class="btn-sub">WhatsApp</span>
-                <span>Écrire un message</span>
+                <span data-i18n="contact.wa">Écrire un message</span>
               </div>
             </a>
           </div>
         </div>
         <div>
-          <p>Retrouvez-nous aussi sur les réseaux sociaux pour les menus du jour, événements et promotions :</p>
+          <p data-i18n="contact.social">Retrouvez-nous aussi sur les réseaux sociaux pour les menus du jour, événements et promotions :</p>
           <div class="social-links">
             <a href="#" class="social-link">📘 Facebook</a>
             <a href="#" class="social-link">📸 Instagram</a>
             <a href="#" class="social-link">▶️ TikTok</a>
           </div>
           <br>
-          <p style="font-size:13px; margin-top:4px;">📍 Sapia, Daloa, Côte d'Ivoire<br>🕒 Mardi au Dimanche · 11h30 – 19h00</p>
+          <p style="font-size:13px; margin-top:4px;" data-i18n="contact.info">📍 Sapia, Daloa, Côte d'Ivoire<br>🕒 Mardi au Dimanche · 11h30 – 19h00</p>
         </div>
       </div>
     </section>
 
     <!-- ╔══ AVIS ══╗ -->
     <section id="avis" class="reveal">
-      <span class="section-label">Retours clients</span>
-      <h2>Laissez votre avis</h2>
+      <span class="section-label" data-i18n="avis.label">Retours clients</span>
+      <h2 data-i18n="avis.title">Laissez votre avis</h2>
       <div class="divider"></div>
 
       <div class="avis-layout">
-        <!-- Form -->
         <div>
-          <p style="margin-bottom:20px;">Partagez votre expérience — votre avis sera publié après validation.</p>
+          <p style="margin-bottom:20px;" data-i18n="avis.intro">Partagez votre expérience — votre avis sera publié après validation.</p>
           <div class="avis-form">
             <div class="form-group">
-              <label for="avisNom">Votre nom</label>
+              <label for="avisNom" data-i18n="avis.name">Votre nom</label>
               <input class="form-input" type="text" id="avisNom" placeholder="Ex : Jean-Pierre" autocomplete="name">
             </div>
             <div class="form-group">
-              <label>Votre note</label>
+              <label data-i18n="avis.rating">Votre note</label>
               <div class="stars-row" id="starsRow" role="group" aria-label="Note sur 5">
                 <span class="star-item lit" data-v="1" role="button" aria-label="1 étoile" tabindex="0">★</span>
                 <span class="star-item lit" data-v="2" role="button" aria-label="2 étoiles" tabindex="0">★</span>
@@ -1526,27 +1556,26 @@
               <input type="hidden" id="avisNote" value="5">
             </div>
             <div class="form-group">
-              <label for="avisTexte">Votre avis</label>
-              <textarea class="form-input" id="avisTexte" placeholder="Décrivez votre expérience..."></textarea>
+              <label for="avisTexte" data-i18n="avis.comment">Votre avis</label>
+              <textarea class="form-input" id="avisTexte" data-i18n-placeholder="avis.placeholder" placeholder="Décrivez votre expérience..."></textarea>
             </div>
             <div class="form-group">
-              <label>Photo (optionnel)</label>
+              <label data-i18n="avis.photo">Photo (optionnel)</label>
               <label class="file-upload-label" for="avisPhoto">
                 <span>📷</span>
-                <span id="fileLabel">Choisir une photo...</span>
+                <span id="fileLabel" data-i18n="avis.choose">Choisir une photo...</span>
               </label>
               <input type="file" id="avisPhoto" accept="image/*">
             </div>
-            <button class="btn-submit" id="btnSend">Envoyer mon avis</button>
+            <button class="btn-submit" id="btnSend" data-i18n="avis.send">Envoyer mon avis</button>
             <p id="msgRetour"></p>
           </div>
         </div>
 
-        <!-- Avis list -->
         <div>
-          <p style="margin-bottom:20px;">Ce que nos clients disent de nous :</p>
+          <p style="margin-bottom:20px;" data-i18n="avis.what">Ce que nos clients disent de nous :</p>
           <div class="avis-list" id="avisList">
-            <p style="color:#444; font-size:14px;">Chargement des avis...</p>
+            <p style="color:#444; font-size:14px;" data-i18n="avis.loading">Chargement des avis...</p>
           </div>
         </div>
       </div>
@@ -1554,20 +1583,10 @@
 
     <!-- ╔══ GALERIE ══╗ -->
     <section id="galerie" class="reveal">
-      <span class="section-label">Atmosphère</span>
-      <h2>Galerie photos</h2>
+      <span class="section-label" data-i18n="galerie.label">Atmosphère</span>
+      <h2 data-i18n="galerie.title">Galerie photos</h2>
       <div class="divider"></div>
-      <p style="margin-bottom:24px;">Découvrez l'ambiance, les plats et l'expérience unique de La Paillote du Chasseur.</p>
-      <!--
-      <div class="galerie-grid">
-        <div class="galerie-item"><img class="galerie-img" src="galerie1.jpg" alt="Galerie 1" loading="lazy"><div class="galerie-over"><span class="galerie-icon">⊕</span></div></div>
-        <div class="galerie-item"><img class="galerie-img" src="galerie2.jpg" alt="Galerie 2" loading="lazy"><div class="galerie-over"><span class="galerie-icon">⊕</span></div></div>
-        <div class="galerie-item"><img class="galerie-img" src="galerie3.jpg" alt="Galerie 3" loading="lazy"><div class="galerie-over"><span class="galerie-icon">⊕</span></div></div>
-        <div class="galerie-item"><img class="galerie-img" src="galerie4.jpg" alt="Galerie 4" loading="lazy"><div class="galerie-over"><span class="galerie-icon">⊕</span></div></div>
-        <div class="galerie-item"><img class="galerie-img" src="galerie5.jpg" alt="Galerie 5" loading="lazy"><div class="galerie-over"><span class="galerie-icon">⊕</span></div></div>
-        <div class="galerie-item"><img class="galerie-img" src="galerie6.jpg" alt="Galerie 6" loading="lazy"><div class="galerie-over"><span class="galerie-icon">⊕</span></div></div>
-      </div>
-      -->
+      <p style="margin-bottom:24px;" data-i18n="galerie.p">Découvrez l'ambiance, les plats et l'expérience unique de La Paillote du Chasseur.</p>
     </section>
 
   </main>
@@ -1579,25 +1598,314 @@
   </div>
 
   <footer>
-    © 2026 <strong>La Paillote du Chasseur</strong> — Tous droits réservés &nbsp;·&nbsp; Sapia, Daloa, Côte d'Ivoire
+    © 2026 <strong>La Paillote du Chasseur</strong> — <span data-i18n="footer.rights">Tous droits réservés</span> &nbsp;·&nbsp; Sapia, Daloa, Côte d'Ivoire
   </footer>
 
   <a href="https://wa.me/2250757766271" class="whatsapp-fab" target="_blank" rel="noopener" title="Écrire sur WhatsApp">💬</a>
 
 <script>
-  /* ── CONFIG ── */
+  /* ══════════════════════════════════════════════════
+     i18n TRANSLATIONS
+  ══════════════════════════════════════════════════ */
+  const translations = {
+    fr: {
+      "nav.menu":           "Menu",
+      "nav.loc":            "Localisation",
+      "nav.contact":        "Contact",
+      "nav.avis":           "Avis",
+      "nav.galerie":        "Galerie",
+      "hero.eyebrow":       "Cuisine Africaine Authentique",
+      "hero.sub":           "Saveurs de brousse, braisés & spécialités de chasse<br>— Daloa, Côte d'Ivoire —",
+      "hero.pill.hours":    "🕒 Mar – Dim",
+      "hero.cta":           "Découvrir le menu →",
+      "hero.scroll":        "Défiler",
+      "about.label":        "Notre histoire",
+      "about.title":        "Un restaurant au cœur de la tradition",
+      "about.p1":           "La Paillote du Chasseur vous accueille dans une ambiance chaleureuse, autour d'une cuisine africaine authentique, inspirée des saveurs de la brousse et des recettes traditionnelles. Viandes de chasse, braisés, soupes épicées, garnitures généreuses : chaque plat est préparé avec soin.",
+      "about.p2":           "Nous travaillons avec des producteurs locaux pour garantir la fraîcheur et l'authenticité de chaque assiette. Venez partager un moment unique dans un cadre qui respire la savane ivoirienne.",
+      "stats.specialties":  "Spécialités",
+      "stats.days":         "Mar – Dim",
+      "stats.local":        "Produits locaux",
+      "stats.rating":       "Note clients",
+      "menu.label":         "Restauration",
+      "menu.title":         "Menu – Sélection du chef",
+      "menu.scroll":        "← Faites défiler les plats →",
+      "menu.bestseller":    "⭐ Best-seller",
+      "menu.full":          "Carte complète",
+      "dish.carpe.title":   "Carpe braisée entière",
+      "dish.carpe.desc":    "Carpe entière grillée à la braise, servie avec attiéké et sauce épicée.",
+      "dish.carpe.price":   "À partir de 5 000 Frcfa",
+      "dish.poulet.title":  "Poulet africain braisé",
+      "dish.poulet.desc":   "Poulet entier doré et croustillant, accompagné d'attiéké ou d'igname grillée.",
+      "dish.escargots.title": "Escargots sautés",
+      "dish.escargots.desc":  "Escargots sautés à la sauce rouge brillante, servis bien relevés.",
+      "dish.cabri.title":   "Soupe de cabri",
+      "dish.cabri.desc":    "Morceaux de cabri tendres dans une sauce rouge épicée, servis bien chauds.",
+      "dish.garnitures.title": "Garnitures",
+      "dish.garnitures.desc":  "Attiéké, alloco, alloco huile rouge, riz, frites, igname grillée.",
+      "dish.garnitures.price": "À partir de 500 Frcfa",
+      "dish.boissons.title": "Boissons maison",
+      "dish.boissons.desc":  "Bissap, Gnanmankoudji, Bandji, bières, vins, eau minérale.",
+      "dish.boissons.price": "À partir de 500 Frcfa",
+      "loc.label":          "Nous trouver",
+      "loc.title":          "Localisation & Horaires",
+      "loc.maps":           "Ouvrir dans Maps ↗",
+      "loc.hours.title":    "🕒 Horaires d'ouverture",
+      "closed":             "Fermé",
+      "day.0":              "Dimanche",
+      "day.1":              "Lundi",
+      "day.2":              "Mardi",
+      "day.3":              "Mercredi",
+      "day.4":              "Jeudi",
+      "day.5":              "Vendredi",
+      "day.6":              "Samedi",
+      "contact.label":      "Nous contacter",
+      "contact.title":      "Réservations & Contact",
+      "contact.p":          "Pour réserver une table, commander un plat ou organiser un événement privé, contactez-nous directement :",
+      "contact.call":       "Appeler maintenant",
+      "contact.email":      "Envoyer un email",
+      "contact.wa":         "Écrire un message",
+      "contact.social":     "Retrouvez-nous aussi sur les réseaux sociaux pour les menus du jour, événements et promotions :",
+      "contact.info":       "📍 Sapia, Daloa, Côte d'Ivoire<br>🕒 Mardi au Dimanche · 11h30 – 19h00",
+      "avis.label":         "Retours clients",
+      "avis.title":         "Laissez votre avis",
+      "avis.intro":         "Partagez votre expérience — votre avis sera publié après validation.",
+      "avis.name":          "Votre nom",
+      "avis.rating":        "Votre note",
+      "avis.comment":       "Votre avis",
+      "avis.placeholder":   "Décrivez votre expérience...",
+      "avis.photo":         "Photo (optionnel)",
+      "avis.choose":        "Choisir une photo...",
+      "avis.send":          "Envoyer mon avis",
+      "avis.what":          "Ce que nos clients disent de nous :",
+      "avis.loading":       "Chargement des avis...",
+      "avis.none":          "Aucun avis pour le moment. Soyez le premier !",
+      "avis.unavail":       "Avis temporairement indisponibles.",
+      "avis.error":         "⚠️ Veuillez remplir votre nom et votre avis.",
+      "avis.success":       "✅ Merci ! Votre avis sera publié après validation.",
+      "avis.neterror":      "❌ Impossible d'envoyer. Vérifiez votre connexion.",
+      "avis.sending":       "Envoi…",
+      "galerie.label":      "Atmosphère",
+      "galerie.title":      "Galerie photos",
+      "galerie.p":          "Découvrez l'ambiance, les plats et l'expérience unique de La Paillote du Chasseur.",
+      "footer.rights":      "Tous droits réservés",
+    },
+    en: {
+      "nav.menu":           "Menu",
+      "nav.loc":            "Location",
+      "nav.contact":        "Contact",
+      "nav.avis":           "Reviews",
+      "nav.galerie":        "Gallery",
+      "hero.eyebrow":       "Authentic African Cuisine",
+      "hero.sub":           "Bush flavours, grills & hunting specialties<br>— Daloa, Côte d'Ivoire —",
+      "hero.pill.hours":    "🕒 Tue – Sun",
+      "hero.cta":           "Explore the menu →",
+      "hero.scroll":        "Scroll",
+      "about.label":        "Our story",
+      "about.title":        "A restaurant at the heart of tradition",
+      "about.p1":           "La Paillote du Chasseur welcomes you in a warm setting, centred around authentic African cuisine inspired by bush flavours and traditional recipes. Game meats, grilled dishes, spicy soups, generous sides — every plate is prepared with care.",
+      "about.p2":           "We work with local producers to guarantee the freshness and authenticity of every dish. Come share a unique moment in an atmosphere that breathes the spirit of the Ivorian savanna.",
+      "stats.specialties":  "Specialties",
+      "stats.days":         "Tue – Sun",
+      "stats.local":        "Local products",
+      "stats.rating":       "Guest rating",
+      "menu.label":         "Food",
+      "menu.title":         "Menu – Chef's selection",
+      "menu.scroll":        "← Swipe through the dishes →",
+      "menu.bestseller":    "⭐ Best-seller",
+      "menu.full":          "Full menu",
+      "dish.carpe.title":   "Whole grilled carp",
+      "dish.carpe.desc":    "Whole carp grilled over charcoal, served with attiéké and spicy sauce.",
+      "dish.carpe.price":   "From 5,000 Frcfa",
+      "dish.poulet.title":  "African braised chicken",
+      "dish.poulet.desc":   "Golden, crispy whole chicken served with attiéké or grilled yam.",
+      "dish.escargots.title": "Sautéed snails",
+      "dish.escargots.desc":  "Snails sautéed in a vibrant red sauce, well seasoned.",
+      "dish.cabri.title":   "Goat soup",
+      "dish.cabri.desc":    "Tender goat pieces in a spicy red sauce, served piping hot.",
+      "dish.garnitures.title": "Sides",
+      "dish.garnitures.desc":  "Attiéké, alloco, red-oil alloco, rice, fries, grilled yam.",
+      "dish.garnitures.price": "From 500 Frcfa",
+      "dish.boissons.title": "House drinks",
+      "dish.boissons.desc":  "Bissap, Gnanmankoudji, Bandji, beers, wines, mineral water.",
+      "dish.boissons.price": "From 500 Frcfa",
+      "loc.label":          "Find us",
+      "loc.title":          "Location & Opening hours",
+      "loc.maps":           "Open in Maps ↗",
+      "loc.hours.title":    "🕒 Opening hours",
+      "closed":             "Closed",
+      "day.0":              "Sunday",
+      "day.1":              "Monday",
+      "day.2":              "Tuesday",
+      "day.3":              "Wednesday",
+      "day.4":              "Thursday",
+      "day.5":              "Friday",
+      "day.6":              "Saturday",
+      "contact.label":      "Get in touch",
+      "contact.title":      "Reservations & Contact",
+      "contact.p":          "To book a table, order a dish or organise a private event, contact us directly:",
+      "contact.call":       "Call now",
+      "contact.email":      "Send an email",
+      "contact.wa":         "Send a message",
+      "contact.social":     "Follow us on social media for daily menus, events and promotions:",
+      "contact.info":       "📍 Sapia, Daloa, Côte d'Ivoire<br>🕒 Tuesday to Sunday · 11:30 AM – 7:00 PM",
+      "avis.label":         "Guest feedback",
+      "avis.title":         "Leave a review",
+      "avis.intro":         "Share your experience — your review will be published after approval.",
+      "avis.name":          "Your name",
+      "avis.rating":        "Your rating",
+      "avis.comment":       "Your review",
+      "avis.placeholder":   "Describe your experience...",
+      "avis.photo":         "Photo (optional)",
+      "avis.choose":        "Choose a photo...",
+      "avis.send":          "Submit my review",
+      "avis.what":          "What our guests say about us:",
+      "avis.loading":       "Loading reviews...",
+      "avis.none":          "No reviews yet. Be the first!",
+      "avis.unavail":       "Reviews temporarily unavailable.",
+      "avis.error":         "⚠️ Please fill in your name and review.",
+      "avis.success":       "✅ Thank you! Your review will be published after approval.",
+      "avis.neterror":      "❌ Could not submit. Please check your connection.",
+      "avis.sending":       "Sending…",
+      "galerie.label":      "Atmosphere",
+      "galerie.title":      "Photo gallery",
+      "galerie.p":          "Discover the ambiance, the dishes and the unique experience of La Paillote du Chasseur.",
+      "footer.rights":      "All rights reserved",
+    },
+    de: {
+      "nav.menu":           "Speisekarte",
+      "nav.loc":            "Standort",
+      "nav.contact":        "Kontakt",
+      "nav.avis":           "Bewertungen",
+      "nav.galerie":        "Galerie",
+      "hero.eyebrow":       "Authentische Afrikanische Küche",
+      "hero.sub":           "Buschgeschmäcker, Grillspezialitäten & Wildgerichte<br>— Daloa, Côte d'Ivoire —",
+      "hero.pill.hours":    "🕒 Di – So",
+      "hero.cta":           "Speisekarte entdecken →",
+      "hero.scroll":        "Scrollen",
+      "about.label":        "Unsere Geschichte",
+      "about.title":        "Ein Restaurant im Herzen der Tradition",
+      "about.p1":           "La Paillote du Chasseur empfängt Sie in einer herzlichen Atmosphäre rund um authentische afrikanische Küche, inspiriert von Buschgeschmäckern und traditionellen Rezepten. Wildfleisch, Grillgerichte, würzige Suppen, reichhaltige Beilagen — jedes Gericht wird mit Sorgfalt zubereitet.",
+      "about.p2":           "Wir arbeiten mit lokalen Erzeugern zusammen, um die Frische und Authentizität jedes Gerichts zu gewährleisten. Kommen Sie und teilen Sie einen einzigartigen Moment in einem Ambiente, das den Geist der ivorischen Savanne atmet.",
+      "stats.specialties":  "Spezialitäten",
+      "stats.days":         "Di – So",
+      "stats.local":        "Lokale Produkte",
+      "stats.rating":       "Gästebewertung",
+      "menu.label":         "Speisen",
+      "menu.title":         "Speisekarte – Auswahl des Küchenchefs",
+      "menu.scroll":        "← Gerichte durchscrollen →",
+      "menu.bestseller":    "⭐ Bestseller",
+      "menu.full":          "Vollständige Karte",
+      "dish.carpe.title":   "Gegrillter Karpfen (ganz)",
+      "dish.carpe.desc":    "Ganzer Karpfen über Holzkohle gegrillt, serviert mit Attiéké und scharfer Sauce.",
+      "dish.carpe.price":   "Ab 5.000 Frcfa",
+      "dish.poulet.title":  "Afrikanisches Brathähnchen",
+      "dish.poulet.desc":   "Goldbraunes, knuspriges ganzes Hähnchen mit Attiéké oder gegrillter Yamswurzel.",
+      "dish.escargots.title": "Sautierte Schnecken",
+      "dish.escargots.desc":  "Schnecken in kräftiger roter Sauce sautiert, gut gewürzt.",
+      "dish.cabri.title":   "Ziegensuppe",
+      "dish.cabri.desc":    "Zartes Ziegenfleisch in würziger roter Sauce, heiß serviert.",
+      "dish.garnitures.title": "Beilagen",
+      "dish.garnitures.desc":  "Attiéké, Alloco, Alloco mit rotem Öl, Reis, Pommes, gegrillte Yamswurzel.",
+      "dish.garnitures.price": "Ab 500 Frcfa",
+      "dish.boissons.title": "Hausgetränke",
+      "dish.boissons.desc":  "Bissap, Gnanmankoudji, Bandji, Bier, Wein, Mineralwasser.",
+      "dish.boissons.price": "Ab 500 Frcfa",
+      "loc.label":          "So finden Sie uns",
+      "loc.title":          "Standort & Öffnungszeiten",
+      "loc.maps":           "In Maps öffnen ↗",
+      "loc.hours.title":    "🕒 Öffnungszeiten",
+      "closed":             "Geschlossen",
+      "day.0":              "Sonntag",
+      "day.1":              "Montag",
+      "day.2":              "Dienstag",
+      "day.3":              "Mittwoch",
+      "day.4":              "Donnerstag",
+      "day.5":              "Freitag",
+      "day.6":              "Samstag",
+      "contact.label":      "Kontakt aufnehmen",
+      "contact.title":      "Reservierungen & Kontakt",
+      "contact.p":          "Um einen Tisch zu reservieren, ein Gericht zu bestellen oder eine private Veranstaltung zu organisieren, kontaktieren Sie uns direkt:",
+      "contact.call":       "Jetzt anrufen",
+      "contact.email":      "E-Mail senden",
+      "contact.wa":         "Nachricht senden",
+      "contact.social":     "Folgen Sie uns auch in den sozialen Medien für Tagesmenüs, Events und Angebote:",
+      "contact.info":       "📍 Sapia, Daloa, Côte d'Ivoire<br>🕒 Dienstag bis Sonntag · 11:30 – 19:00 Uhr",
+      "avis.label":         "Gästefeedback",
+      "avis.title":         "Bewertung hinterlassen",
+      "avis.intro":         "Teilen Sie Ihre Erfahrung — Ihre Bewertung wird nach Prüfung veröffentlicht.",
+      "avis.name":          "Ihr Name",
+      "avis.rating":        "Ihre Bewertung",
+      "avis.comment":       "Ihre Meinung",
+      "avis.placeholder":   "Beschreiben Sie Ihre Erfahrung...",
+      "avis.photo":         "Foto (optional)",
+      "avis.choose":        "Foto auswählen...",
+      "avis.send":          "Bewertung absenden",
+      "avis.what":          "Was unsere Gäste über uns sagen:",
+      "avis.loading":       "Bewertungen werden geladen...",
+      "avis.none":          "Noch keine Bewertungen. Seien Sie der Erste!",
+      "avis.unavail":       "Bewertungen vorübergehend nicht verfügbar.",
+      "avis.error":         "⚠️ Bitte füllen Sie Ihren Namen und Ihre Bewertung aus.",
+      "avis.success":       "✅ Danke! Ihre Bewertung wird nach Prüfung veröffentlicht.",
+      "avis.neterror":      "❌ Senden fehlgeschlagen. Bitte prüfen Sie Ihre Verbindung.",
+      "avis.sending":       "Wird gesendet…",
+      "galerie.label":      "Atmosphäre",
+      "galerie.title":      "Fotogalerie",
+      "galerie.p":          "Entdecken Sie das Ambiente, die Gerichte und das einzigartige Erlebnis von La Paillote du Chasseur.",
+      "footer.rights":      "Alle Rechte vorbehalten",
+    }
+  };
+
+  let currentLang = 'fr';
+
+  function applyTranslations(lang) {
+    const t = translations[lang];
+    if (!t) return;
+    currentLang = lang;
+
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+
+    // Translate all elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.innerHTML = t[key];
+      }
+    });
+
+    // Translate placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) {
+        el.placeholder = t[key];
+      }
+    });
+
+    // Update active button state — sync ALL lang buttons (desktop + drawer)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // Store preference
+    try { localStorage.setItem('paillote_lang', lang); } catch(e) {}
+  }
+
+  // Attach click to all lang buttons (desktop + mobile drawer)
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyTranslations(btn.dataset.lang));
+  });
+
+  // ── CONFIG ──
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxy0MvUQ1yBD708LYe4fgtDJJ2nrMPDxYo0sNIVs0Nm1kupmahumuREGh8MYeL_EOzz/exec";
 
-  /* ── NAVBAR SCROLL ── */
+  // ── NAVBAR SCROLL ──
   const navbar = document.getElementById('navbar');
-  let lastY = 0;
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    navbar.classList.toggle('scrolled', y > 60);
-    lastY = y;
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  /* ── HAMBURGER ── */
+  // ── HAMBURGER ──
   const burger = document.getElementById('burger');
   const drawer = document.getElementById('drawer');
 
@@ -1619,20 +1927,20 @@
     if (e.key === 'Escape') { closeDrawer(); closeLightbox(); }
   });
 
-  /* ── REVEAL ON SCROLL ── */
+  // ── REVEAL ON SCROLL ──
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  /* ── HIGHLIGHT TODAY'S HOURS ── */
+  // ── HIGHLIGHT TODAY'S HOURS ──
   (function() {
-    const today = new Date().getDay(); // 0=Sun, 1=Mon...
+    const today = new Date().getDay();
     const row = document.getElementById('day-' + today);
     if (row) row.classList.add('today');
   })();
 
-  /* ── STARS ── */
+  // ── STARS ──
   const stars = document.querySelectorAll('.star-item');
   const noteHidden = document.getElementById('avisNote');
 
@@ -1653,28 +1961,35 @@
     renderStars(parseInt(noteHidden.value));
   });
 
-  /* ── FILE LABEL ── */
+  // ── FILE LABEL ──
   document.getElementById('avisPhoto').addEventListener('change', function() {
+    const t = translations[currentLang];
     document.getElementById('fileLabel').textContent =
-      this.files[0] ? this.files[0].name : 'Choisir une photo...';
+      this.files[0] ? this.files[0].name : (t['avis.choose'] || 'Choisir une photo...');
   });
 
-  /* ── INIT ── */
+  // ── INIT ──
   window.addEventListener('DOMContentLoaded', () => {
     renderStars(5);
+    // Restore saved language
+    try {
+      const saved = localStorage.getItem('paillote_lang');
+      if (saved && translations[saved]) applyTranslations(saved);
+    } catch(e) {}
     loadAvis();
   });
 
-  /* ── SEND AVIS ── */
+  // ── SEND AVIS ──
   document.getElementById('btnSend').addEventListener('click', async () => {
     const nom   = document.getElementById('avisNom').value.trim();
     const note  = noteHidden.value;
     const texte = document.getElementById('avisTexte').value.trim();
     const msgEl = document.getElementById('msgRetour');
     const btn   = document.getElementById('btnSend');
+    const t     = translations[currentLang];
 
     if (!nom || !texte) {
-      showMsg(msgEl, '⚠️ Veuillez remplir votre nom et votre avis.', '#e07070');
+      showMsg(msgEl, t['avis.error'], '#e07070');
       return;
     }
 
@@ -1685,7 +2000,7 @@
     }
 
     btn.disabled = true;
-    btn.textContent = 'Envoi…';
+    btn.textContent = t['avis.sending'];
 
     try {
       await fetch(SCRIPT_URL, {
@@ -1695,21 +2010,21 @@
         body: JSON.stringify({ nom, note, texte, photo })
       });
 
-      showMsg(msgEl, '✅ Merci ! Votre avis sera publié après validation.', '#6fcf97');
+      showMsg(msgEl, t['avis.success'], '#6fcf97');
 
       document.getElementById('avisNom').value   = '';
       document.getElementById('avisTexte').value = '';
       document.getElementById('avisPhoto').value = '';
-      document.getElementById('fileLabel').textContent = 'Choisir une photo...';
+      document.getElementById('fileLabel').textContent = t['avis.choose'];
       noteHidden.value = 5;
       renderStars(5);
 
     } catch {
-      showMsg(msgEl, "❌ Impossible d'envoyer. Vérifiez votre connexion.", '#e07070');
+      showMsg(msgEl, t['avis.neterror'], '#e07070');
     }
 
     btn.disabled = false;
-    btn.textContent = 'Envoyer mon avis';
+    btn.textContent = t['avis.send'];
   });
 
   function showMsg(el, text, color) {
@@ -1727,9 +2042,10 @@
     });
   }
 
-  /* ── LOAD AVIS ── */
+  // ── LOAD AVIS ──
   async function loadAvis() {
     const container = document.getElementById('avisList');
+    const t = translations[currentLang];
     try {
       const res  = await fetch(SCRIPT_URL + '?mode=list');
       if (!res.ok) throw new Error();
@@ -1738,7 +2054,7 @@
       container.innerHTML = '';
 
       if (!data.length) {
-        container.innerHTML = '<p style="color:#555;font-size:14px;">Aucun avis pour le moment. Soyez le premier !</p>';
+        container.innerHTML = `<p style="color:#555;font-size:14px;">${t['avis.none']}</p>`;
         return;
       }
 
@@ -1758,7 +2074,7 @@
       });
 
     } catch {
-      container.innerHTML = '<p style="color:#555;font-size:14px;">Avis temporairement indisponibles.</p>';
+      container.innerHTML = `<p style="color:#555;font-size:14px;">${t['avis.unavail']}</p>`;
     }
   }
 
@@ -1768,7 +2084,7 @@
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  /* ── LIGHTBOX ── */
+  // ── LIGHTBOX ──
   const lightbox = document.getElementById('lightbox');
   const lbImg    = document.getElementById('lbImg');
 
@@ -1788,7 +2104,7 @@
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-  /* ── Prevent scroll bleed on iOS drawer ── */
+  // ── Prevent scroll bleed on iOS drawer ──
   drawer.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
 </script>
 </body>
